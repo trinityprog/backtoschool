@@ -31,20 +31,14 @@ return [
 
     ],
     'mechanics' => [
-        'magnum' => [
-            '1' => '<div class="title header big text yellow impact">Купи</div>
-                    <div class="body medium header text din">три любых больших батона Snickers<sup>®</sup>, Twix<sup>®</sup> или Bounty<sup>®</sup></div>',
-            '2' => '<div class="title header big text yellow impact">Загрузи чек</div>
-                     <div class="body medium header text din">на сайте</div>',
-            '3' => '<div class="title header big text yellow impact">Участвуй</div>
-                    <div class="body medium header text din">в еженедельном розыгрыше призов!</div>',
-        ],
-        'small' => [],
+        '1' => '<div class="title header big text yellow impact">Купи</div>
+                <div class="body medium header text din">три любых больших батона Snickers<sup>®</sup>, Twix<sup>®</sup> или Bounty<sup>®</sup></div>',
+        '2' => '<div class="title header big text yellow impact">Загрузи чек</div>
+                 <div class="body medium header text din">на сайте</div>',
+        '3' => '<div class="title header big text yellow impact">Участвуй</div>
+                <div class="body medium header text din">в еженедельном розыгрыше призов!</div>',
     ],
-    'prizes' => [
-        'magnum' => 'каждую неделю разыгрываются:',
-        'small' => 'Еженедельные призы'
-    ],
+    'prizes' => 'каждую неделю разыгрываются:',
     'faq' => [
         'header' => 'вопросы и ответы',
         'text' => 'Перед тем как задать вопрос, просмотри наиболее часто задаваемые вопросы.<br>

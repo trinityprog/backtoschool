@@ -109,20 +109,10 @@ body{
         height: 1.5em;
         mask: url(/images/icons/check.png) center / contain no-repeat;
     }
-    &.magnum{
-        width: 4.2em;
-        height: 1.1em;
-        mask: url(/images/logos/magnum.png) center / contain no-repeat;
-    }
-    &.small{
-        width: 7.125em;
-        height: 1.1em;
-        background: url(/images/logos/small.png) center / contain no-repeat;
-    }
-    &.vk{
-        width: 1.3em;
-        height: 1.3em;
-        mask: url(/images/icons/vk.png) center / contain no-repeat;
+    &.yerevan-city{
+        width: 2.7em;
+        height: 2.3em;
+        background: url(/images/logo.png) center / contain no-repeat;
     }
     &.camera{
         width: 3.5em;
@@ -1246,10 +1236,14 @@ footer{
         >.row{
             justify-content: space-between;
             margin-bottom: 3rem;
-            .row{
-                align-items: center;
-                :first-child{
-                    margin-right: 2rem;
+            .column{
+                width: 100%;
+                .row{
+                    align-items: center;
+                    margin: 0 auto;
+                    :first-child{
+                        margin-right: 2rem;
+                    }
                 }
             }
         }

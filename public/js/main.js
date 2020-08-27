@@ -31816,8 +31816,8 @@ document.addEventListener('DOMContentLoaded', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\magnum\resources\js\main.js */"./resources/js/main.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\magnum\resources\sass\main.scss */"./resources/sass/main.scss");
+__webpack_require__(/*! C:\xampp\htdocs\backtoschool\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\backtoschool\resources\sass\main.scss */"./resources/sass/main.scss");
 
 
 /***/ })

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    {{ env('APP_NAME') }} - MAGNUM
+    {{ env('APP_NAME') }} - YEREVAN CITY
 @endsection
 
 
@@ -20,11 +20,11 @@
         <div class="top">
             <div class="container row">
                 <div class="column">
-                    <div class="logo magnum">
+                    <div class="logo">
                         <img src="{{ asset("/images/logo.png") }}">
                     </div>
 
-                    <div class="din text small">
+                    <div class="text small">
                         @lang('index.hero.top')
                     </div>
                 </div>
@@ -58,43 +58,43 @@
                         <div class="image" style="background-image: url('/images/steps/01.png')">
                             <div class="number text impact big">1</div>
                         </div>
-                        @lang('index.mechanics.magnum.1')
+                        @lang('index.mechanics.1')
                     </div>
                     <div class="step column" data-aos="fade-left" data-aos-delay="300">
                         <div class="image" style="background-image: url('/images/steps/02.png')">
                             <div class="number text impact big">2</div>
                         </div>
-                        @lang('index.mechanics.magnum.2')
+                        @lang('index.mechanics.2')
                         <a class="icon button text impact header big g-trigger-register" href="@auth{{ url("/profile") }}@else #authorization @endauth"><i class="icon check"></i> @lang('index.actions.upload')</a>
                     </div>
                     <div class="step column" data-aos="fade-left" data-aos-delay="600">
                         <div class="image" style="background-image: url('/images/steps/03.png')">
                             <div class="number text impact big">3</div>
                         </div>
-                        @lang('index.mechanics.magnum.3')
+                        @lang('index.mechanics.3')
                     </div>
                 </div>
-                <a href="{{ asset("/docs/rules_" . app()->getLocale() . ".pdf" ) }}" download="@lang('index.rules').pdf" class="link text header din medium">@lang('index.rules')</a>
+                <a href="{{ asset("/docs/rules_" . app()->getLocale() . ".pdf" ) }}" download="@lang('index.rules').pdf" class="link text header medium">@lang('index.rules')</a>
             </div>
         </div>
     </section>
 
     <section id="prizes" data-aos="fade-up" data-delay="800">
         <div class="text impact large header">
-            @lang('index.prizes.magnum')
+            @lang('index.prizes')
         </div>
         <div class="main">
             <div class="container column">
-                <div class="prizes magnum row">
+                <div class="prizes row">
                     <div class="prize">
-                        <div class="image" style="background-image: url('/images/prizes/magnum/main/01.png')">
+                        <div class="image" style="background-image: url('/images/prizes/main/01.png')">
                             <div class="number text impact">
                                 <span>x</span><span>1</span>
                             </div>
                         </div>
                     </div>
                     <div class="prize">
-                        <div class="image" style="background-image: url('/images/prizes/magnum/main/02.png')">
+                        <div class="image" style="background-image: url('/images/prizes/main/02.png')">
                             <div class="number text impact">
                                 <span>x</span><span>1</span>
                             </div>
@@ -142,7 +142,7 @@
             <div class="text impact header large">
                 @lang('index.header.winners')
             </div>
-            <div class="form row text din">
+            <div class="form row text">
                 <div class="input">
                     <input type="tel" name="search" placeholder="@lang('index.form.search')">
 
@@ -151,7 +151,7 @@
                     <i class="icon search"></i>
                 </button>
             </div>
-            <div class="table column text header medium din">
+            <div class="table column text header medium">
                 <div class="head text impact">
                     <div class="row">
                         <div class="column">@lang('index.form.phone')</div>
@@ -169,10 +169,10 @@
             <div class="text impact header large">
                 @lang('index.faq.header')
             </div>
-            <div class="text din medium">
+            <div class="text medium">
                 @lang('index.faq.text')
             </div>
-            <form action="{{ url("/question") }}" class="form column text medium din" method="post">
+            <form action="{{ url("/question") }}" class="form column text medium" method="post">
                 @csrf
                 <div class="row">
                     <div class="column">
@@ -209,8 +209,8 @@
 
             @foreach(\App\Faq::orderBy('order', 'asc')->get() as $faq)
                 <div class="faq column">
-                    <div class="title text header medium din">@if(app()->getLocale() == 'kk') {{ $faq->question_kk }} @else {{ $faq->question_ru }} @endif</div>
-                    <div class="body text small din">@if(app()->getLocale() == 'kk') {!! $faq->answer_kk !!} @else {!! $faq->answer_ru !!} @endif</div>
+                    <div class="title text header medium">{{ $faq->question }}</div>
+                    <div class="body text">{!! $faq->answer !!} </div>
                 </div>
             @endforeach
 
@@ -219,7 +219,7 @@
 
 
 
-    <a href="#hero" class="yellow button text header din small" id="up">@lang('index.actions.up')</a>
+    <a href="#hero" class="yellow button text header" id="up">@lang('index.actions.up')</a>
 @endsection
 
 @section('footer')
