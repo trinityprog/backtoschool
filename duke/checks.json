@@ -1,0 +1,42 @@
+{
+    "fields": [
+        {
+            "name": "photo",
+            "type": "file"
+        },
+        {
+            "name": "status",
+            "type": "select",
+            "options": {
+                "Не проверено": "Не проверено",
+                "Принят": "Принят",
+                "Отклонен" : "Отклонен"
+            }
+        },
+        {
+            "name": "user_id",
+            "type": "integer#unsigned"
+        }
+    ],
+    "foreign_keys": [
+        {
+            "column": "user_id",
+            "references": "id",
+            "on": "users",
+            "onDelete": "cascade"
+        }
+    ],
+    "relationships": [
+        {
+            "name": "user",
+            "type": "belongsTo",
+            "class": "App\\User"
+        }
+    ],
+    "validations": [
+        {
+            "field" : "photo",
+            "rules" : "file|max:4000|mimes:jpeg,png"
+        }
+    ]
+}

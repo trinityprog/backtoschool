@@ -1,0 +1,39 @@
+{
+    "fields": [
+
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "phone",
+            "type": "string"
+        },
+        {
+            "name": "city",
+            "type": "string"
+        },
+        {
+            "name": "prize",
+            "type": "string"
+        }
+    ],
+    "validations": [
+        {
+            "field": "name",
+            "rules": "required|min:2|max:20|alpha"
+        },
+        {
+            "field": "phone",
+            "rules": "required|size:14"
+        },
+        {
+            "field": "city",
+            "rules": "required|min:2|max:20|alpha"
+        },
+        {
+            "field": "prize",
+            "rules": "required|min:2|max:20"
+        }
+    ]
+}
