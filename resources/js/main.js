@@ -386,9 +386,11 @@ let inputsInit = () => {
             let type = el.type;
             let validated = false;
             if(type == 'tel'){
-                value = value.replace('_', '');
-                if(value.length == 16){
+                value = value.replace(/[\s_]/g, "");
+                if(value.length == 12){
                     validated = true;
+                } else {
+                    el.value = "";
                 }
             }
             else if( type == 'email'){

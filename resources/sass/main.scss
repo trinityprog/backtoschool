@@ -37,6 +37,9 @@ body{
 .text{
     letter-spacing: 0;
     font-family: 'AM-DejaVuSansCondensed-Bold';
+    &.impact{
+        font-family : "AM-Impact";
+    }
     &.yellow{
         color: $yellow;
     }
@@ -60,7 +63,7 @@ body{
         line-height: 2.7rem;
     }
     &.medium{
-        font-size: 2.7rem;
+        font-size: 2.6rem;
         line-height: 3.2rem;
     }
     &.big{
@@ -198,7 +201,7 @@ input, textarea{
     transition: all 0.2s ease;
     position: relative;
     &:not(textarea){
-        height: 1.4375em;
+        height: 1.917em;
     }
     &::placeholder{
         color: inherit;
@@ -485,6 +488,23 @@ header{
             }
         }
     }
+    >.middle{
+        position: absolute;
+        width: 100%;
+        z-index: 50;
+        bottom: 29vh;
+        .container{
+            height: auto;
+            align-items: flex-start;
+            .text{
+                font-size: 3.6rem;
+                line-height: 3.6rem;
+                background-color: $yellow;
+                color: $brown;
+                padding: 1.6rem 1.9rem;
+            }
+        }
+    }
     >.container{
         position: absolute;
         justify-content: center;
@@ -574,10 +594,18 @@ header{
     .container{
         position: relative;
         align-items: center;
+        padding-bottom: 8rem;
         >.link{
             position: absolute;
             bottom: 0;
             right: 0;
+            font-size: 1.8rem;
+        }
+        >.rules-sms{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-size: 1.8rem;
         }
     }
     .steps{
@@ -588,6 +616,9 @@ header{
         width: 42rem;
         align-items: center;
         padding: 0 1.7rem;
+        &:nth-child(2) .text.medium{
+            font-size: 2.6rem;
+        }
         &.small{
             width: 30rem;
             padding: 0;
@@ -635,6 +666,17 @@ header{
         }
         .text{
             text-align: center;
+            &.medium{
+                font-size: 3.2rem;
+            }
+            &.save-check{
+                background-color: $yellow;
+                font-size: 2.1rem;
+                line-height: 2.1rem;
+                padding: 0.9rem 1.8rem;
+                color: $brown;
+                margin-top: 3rem;
+            }
             &.footer{
                 margin-top: 2rem;
             }
@@ -706,7 +748,7 @@ header{
                 font-size: 44px;
             }
             &:last-child{
-                font-size: 66px;
+                font-size: 54px;
             }
         }
         &.small{
@@ -726,25 +768,6 @@ header{
             justify-content: center;
             &.magnum{
                 padding: 3rem 0;
-            }
-            &.small{
-                padding: 5.6rem 0 3rem;
-                .prize{
-                    &:first-child{
-                        .number{
-                            left: 5rem;
-                        }
-                    }
-                    &:last-child{
-                        .number{
-                            right: 10rem;
-                        }
-                    }
-                    .image{
-                        width: 42rem;
-                        height: 32rem;
-                    }
-                }
             }
         }
         .prize{
@@ -771,19 +794,15 @@ header{
                 height: 200px;
                 background: $darkBrown;
                 box-shadow: 0px 0px 100px 100px $darkBrown;
-                //width: 820px;
-                //height: 820px;
-                //background: url(/images/shadow.png) center / contain no-repeat;
             }
             .image{
                 position: relative;
                 z-index: 2;
-                width: 450px;
-                height: 360px;
+                width: 245px;
+                height: 355px;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                //filter: drop-shadow(0px 0px 50px #2d0f00);
 
             }
         }
@@ -804,7 +823,7 @@ header{
             justify-content: center;
             .image{
                 position: relative;
-                width: 410px;
+                width: 355px;
                 height: 320px;
                 background-size: contain;
                 background-repeat: no-repeat;
@@ -827,49 +846,42 @@ header{
             }
             &[data-prize-id="1"]{
                 .image{
-                    background-image: url(/images/prizes/magnum/weekly/01.png);
-                    background-size: 352px 307px;
+                    background-image: url(/images/prizes/weekly/01.png);
+                    background-size: 299px 262px;
+                    background-position: center;
                 }
             }
             &[data-prize-id="2"]{
                 .image{
-                    background-image: url(/images/prizes/magnum/weekly/02.png);
-                    background-size: 398px 252px;
+                    background-image: url(/images/prizes/weekly/02.png);
+                    background-size: 352px 223px;
                     background-position: center;
                 }
             }
             &[data-prize-id="3"]{
                 .image{
-                    background-image: url(/images/prizes/magnum/weekly/03.png);
-                    background-size: 365px 320px;
-                }
-            }
-            &[data-prize-id="4"]{
-                .image{
-                    left: -4rem;
-                    background-image: url(/images/prizes/small/weekly/01.png);
-                    background-size: 408px 297px;
-                    background-position: center bottom;
-                }
-            }
-            &[data-prize-id="5"]{
-                .image{
-                    left: 2rem;
-                    background-image: url(/images/prizes/small/weekly/02.png);
-                    background-size: 352px 223px;
+                    background-image: url(/images/prizes/weekly/03.png);
+                    background-size: 289px 314px;
                     background-position: center;
-                }
-            }
-            &[data-prize-id="6"]{
-                .image{
-                    background-image: url(/images/prizes/small/weekly/03.png);
-                    background-size: 344px 261px;
-                    background-position: center bottom;
                 }
             }
         }
         .container{
             overflow: visible;
+        }
+    }
+    .bg{
+        position: absolute;
+        height: auto;
+        &.bg-1{
+            width: 63.6rem;
+            top: 0;
+            left: 0;
+        }
+        &.bg-2{
+            width: 57.5rem;
+            top: 10rem;
+            right: 3.3rem;
         }
     }
 }
@@ -887,10 +899,13 @@ header{
         align-items: center;
     }
     .form{
-        width: 45rem;
+        width: 52rem;
         font-size: 3.2rem;
         margin: 3rem 0 4rem;
         align-items: center;
+        .input{
+            font-size: 2.8rem !important;
+        }
         .input.validated:after{
             content: none;
             right: 1em;
@@ -987,6 +1002,10 @@ header{
     .medium{
         font-size: 2.9rem;
     }
+    .faq-text{
+        text-align: center;
+        margin-top: 2.8rem;
+    }
     .container{
         width: 86rem;
 
@@ -1000,7 +1019,7 @@ header{
     .form{
         align-items: center;
         margin-bottom: 5rem;
-        font-size: 3.2rem;
+        font-size: 2.8rem;
         .row{
             width: 100%;
             justify-content: space-between;
@@ -1008,6 +1027,9 @@ header{
             .column{
                 width: 27.2rem;
             }
+        }
+        input[name="phone"]{
+            letter-spacing: -2.5px;
         }
         .button{
             padding: 0 1em;
@@ -1072,15 +1094,15 @@ header{
 #up{
     position: fixed;
     bottom: 0px;
-    right: calc(50vw - 650px - 12px);
+    right: calc(50vw - 690px);
     z-index: 5;
     height: 34px;
-    width: 212px;
+    width: 235px;
     border-radius: 10px 10px 0px 0px;
-    font-size: 21px;
+    font-size: 18px;
     line-height: 26px;
     justify-content: flex-start;
-    padding-left: 25px;
+    padding-left: 18px;
     transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
     pointer-events: none;
     opacity: 0;
@@ -1092,15 +1114,15 @@ header{
         position: absolute;
         border-style: solid;
         border-color: $lightBrown;
-        border-width: 2px 2px 0px 0px;
+        border-width: 3px 3px 0px 0px;
         transform: rotate(-45deg);
         right: 20px;
     }
     &:before{
-        top: 13px;
+        top: 11px;
     }
     &:after{
-        top: 20px;
+        top: 18px;
     }
     &.active{
         opacity: 1;
@@ -1244,7 +1266,15 @@ footer{
                     :first-child{
                         margin-right: 2rem;
                     }
+                    :last-child{
+                        font-size: 2.1rem;
+                    }
                 }
+            }
+        }
+        .column{
+            .right, .links{
+                font-size: 1.6rem;
             }
         }
     }
@@ -1275,7 +1305,40 @@ footer{
     background: $brown;
     border-radius: 2.4rem;
     color: white;
-
+    .remodal-close{
+        position: absolute;
+        top: 0;
+        left: auto;
+        right: 0;
+        display: block;
+        overflow: visible;
+        width: 5rem;
+        height: 5rem;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        transition: color .2s;
+        text-decoration: none;
+        color: #fff;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        &:before {
+            font-family: 'Times New Roman' !important;
+            font-size: 5rem;
+            line-height: 5rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            width: 5rem;
+            content: "\D7";
+            text-align: center;
+        }
+        &:focus, &:hover {
+            color: #fbaf1a;
+        }
+    }
     &[data-remodal-id="registration"]{
         padding: 0;
         width: 46rem;
@@ -1317,10 +1380,10 @@ footer{
     }
     &[data-remodal-id="authorization"]{
         padding: 0;
-        width: 36.5rem;
+        width: 41.6rem;
         .form{
             width: 100%;
-            padding: 4.4rem 4rem 4.6rem;
+            padding: 4.7rem 3rem 4.6rem;
             font-size: 3.2rem;
             h1{
                 font-size: 4.2rem;
@@ -1335,16 +1398,17 @@ footer{
             }
         }
         .bottom{
-            padding: 3.6rem 0 4rem;
-            font-size: 2.8rem;
+            padding: 3.1rem 0 4rem;
+            font-size: 3.2rem;
             align-items: center;
             background: $yellow;
             color: $brown;
             h2{
-                margin-bottom: 1.8rem;
+                margin-bottom: 1.6rem;
             }
             .button{
-                padding: 0 1.15em;
+                padding: 0 1.1905em;
+                height: 1.75em;
             }
         }
     }
@@ -1365,7 +1429,7 @@ footer{
             }
         }
         h1{
-            margin-bottom: 4rem;
+            margin-bottom: 3.2rem;
         }
         .languages{
             align-items: center;
@@ -1373,7 +1437,7 @@ footer{
         }
         .button{
             width: 17.5rem;
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             height: 6.6rem;
             border-radius: 1.2rem;
             margin: 0 2rem;
@@ -1396,7 +1460,7 @@ footer{
             background: $yellow;
             color: $brown;
             padding: 1.5rem;
-            font-size: 1.8rem;
+            font-size: 2.1rem;
             .link{
                 position: relative;
                 border-color: $brown;
@@ -1456,8 +1520,8 @@ footer{
         }
     }
     &[data-remodal-id="faq-success"]{
-        width: 40.5rem;
-        padding: 5.6rem 0 6.3rem;
+        width: 46rem;
+        padding: 5.6rem 0;
         h1{
             font-size: 3.2rem;
             line-height: 3.2rem;

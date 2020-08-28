@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="column text tiny">
-            <div>@lang('index.footer.rights')</div>
-            <div class="row">
+            <div class="right" >@lang('index.footer.rights')</div>
+            <div class="row links">
                 @lang('index.footer.links')
             </div>
         </div>

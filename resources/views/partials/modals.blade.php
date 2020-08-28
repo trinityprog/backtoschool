@@ -3,7 +3,6 @@
         <button data-remodal-action="close" class="remodal-close"></button>
         <form action="{{ url("/registration") }}" method="POST" class="form column text din medium">
             @csrf
-{{--            <input type="text" name="type" value="{{ $type }}" hidden>--}}
             <h1 class="text impact big header">@lang('index.modals.reg.header')</h1>
             <div class="column">
                 <div class="input @error('name') error @enderror">
@@ -33,10 +32,10 @@
 
     <div class="remodal" data-remodal-id="authorization">
         <button data-remodal-action="close" class="remodal-close"></button>
-        <form action="{{ url("/authorization") }}" method="POST" class="form column text din medium">
+        <form action="{{ url("/authorization") }}" method="POST" class="form column text medium">
             @csrf
 {{--            <input type="hidden" name="type" value="{{ $type }}">--}}
-            <h1 class="text impact big header">@lang('index.modals.auth.header')</h1>
+            <h1 class="text big header">@lang('index.modals.auth.header')</h1>
             <div class="column">
                 <div class="input @error('phone') error @enderror">
                     <input type="tel" name="phone" placeholder="+374 XX XX XX XX" value="{{ old('phone') }}">
@@ -45,7 +44,7 @@
                     @error('phone') {{ $message }} @enderror
                 </span>
             </div>
-            <button class="button text impact">@lang('index.modals.auth.action')</button>
+            <button class="button text">@lang('index.modals.auth.action')</button>
         </form>
         <div class="bottom column text din medium header">
             @lang('index.modals.auth.bottom')
@@ -137,13 +136,10 @@
 <div class="remodal text header" data-remodal-id="faq-success">
     <button data-remodal-action="close" class="remodal-close"></button>
     @lang('index.modals.faq')
-    <button data-remodal-action="close" class="button text impact">ОК</button>
+    <button data-remodal-action="close" class="button text">ОК</button>
 </div>
 
 <div class="remodal text medium impact" data-remodal-id="ageFilter" data-remodal-options="closeOnOutsideClick: false, hashTracking: false">
-    <div class="languages column">
-        @include('partials.languages')
-    </div>
     <h1 class="text header">@lang('index.modals.age.header')</h1>
 
     <div class="row text header">

@@ -28,7 +28,8 @@
             <div class="left">
                 <div class="logo">
                     <h3>{{ config('app.name', 'Laravel') }}</h3>
-                    <span>{{  now()->format('d M Y H:i') }}</span>
+                    <h3>{{ config('app.timezone', 'Laravel') }}</h3>
+                    <span>{{  now()->format('d.M.Y H:i:s') }}</span>
                 </div>
             </div>
             <div class="main-part">

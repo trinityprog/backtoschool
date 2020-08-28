@@ -16,43 +16,25 @@ class HomeController extends Controller
 
     public function __construct()
     {
-//        if(!Cookie::has('locale')){
-//            Cookie::queue('locale', 'ru', time() + 60 * 60 * 24 * 30, null, null, false, false);
-//            App::setLocale('ru');
-//        }
-//        else{
-//            App::setLocale(Cookie::get('locale'));
-//        }
     }
 
-    public function stores (){
-        return view('pages.stores');
-    }
+
 
     public function index()
     {
         return view('pages.index');
     }
 
-//    public function store($type)
-//    {
-//        return view('pages.' . $type, compact('type'));
-//    }
+
 
 
 
 
     public function profile(){
-//        $type = 'magnum';
         return view('pages.profile');
     }
 
-//    public function language ($locale) {
-//        App::setLocale($locale);
-//        Cookie::queue('locale', $locale, time() + 60 * 60 * 24 * 30, null, null, false, false);
-//
-//        return redirect()->back();
-//    }
+
 
     public function question (Request $request) {
 
@@ -61,7 +43,7 @@ class HomeController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|min:2|max:20|alpha',
             'email' => 'required|email:rfc',
-            'phone' => 'required|size:14',
+            'phone' => 'required|size:16',
             'question' => 'required|min:10|max:150'
         ]);
 
@@ -75,7 +57,7 @@ class HomeController extends Controller
             'question' => $data['question']
         ]);
 
-        Mail::to('support@backtoschool.am')->send(new QuestionCreated($question));
+        Mail::to('dentechduke@gmail.com')->send(new QuestionCreated($question));
 
         return redirect('/#faq-success');
     }

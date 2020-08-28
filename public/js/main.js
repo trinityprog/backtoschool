@@ -31679,10 +31679,12 @@ var inputsInit = function inputsInit() {
       var validated = false;
 
       if (type == 'tel') {
-        value = value.replace('_', '');
+        value = value.replace(/[\s_]/g, "");
 
-        if (value.length == 16) {
+        if (value.length == 12) {
           validated = true;
+        } else {
+          el.value = "";
         }
       } else if (type == 'email') {
         validated = email_validator__WEBPACK_IMPORTED_MODULE_5__["validate"](value);

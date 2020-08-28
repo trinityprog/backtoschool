@@ -42,9 +42,16 @@
         </div>
         <div class="tablet"></div>
         @lang('index.hero.containers')
+        <div class="middle">
+            <div class="container column">
+                <a href="tel:099955226" class="text">
+                    @lang('index.hero.middle')
+                </a>
+            </div>
+        </div>
         <div class="bottom">
             <div class="container column">
-                <a class="icon button text impact header big g-trigger-register" href="@auth{{ url("/profile") }}@else #authorization @endauth">@lang('index.actions.upload')</a>
+                <a class="icon button text header big g-trigger-register" href="@auth{{ url("/profile") }}@else #authorization @endauth">@lang('index.actions.upload')</a>
             </div>
         </div>
 
@@ -65,7 +72,7 @@
                             <div class="number text impact big">2</div>
                         </div>
                         @lang('index.mechanics.2')
-                        <a class="icon button text impact header big g-trigger-register" href="@auth{{ url("/profile") }}@else #authorization @endauth"><i class="icon check"></i> @lang('index.actions.upload')</a>
+                        <span class="text tiny save-check">@lang('index.actions.save_check')</span>
                     </div>
                     <div class="step column" data-aos="fade-left" data-aos-delay="600">
                         <div class="image" style="background-image: url('/images/steps/03.png')">
@@ -74,13 +81,14 @@
                         @lang('index.mechanics.3')
                     </div>
                 </div>
-                <a href="{{ asset("/docs/rules_" . app()->getLocale() . ".pdf" ) }}" download="@lang('index.rules').pdf" class="link text header medium">@lang('index.rules')</a>
+                <span class="rules-sms text header medium">@lang('index.rules_sms')</span>
+                <a href="{{ asset("/docs/rules_am.pdf" ) }}" download="@lang('index.rules').pdf" class="link text header medium">@lang('index.rules')</a>
             </div>
         </div>
     </section>
 
     <section id="prizes" data-aos="fade-up" data-delay="800">
-        <div class="text impact large header">
+        <div class="text large header">
             @lang('index.prizes')
         </div>
         <div class="main">
@@ -89,14 +97,7 @@
                     <div class="prize">
                         <div class="image" style="background-image: url('/images/prizes/main/01.png')">
                             <div class="number text impact">
-                                <span>x</span><span>1</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="prize">
-                        <div class="image" style="background-image: url('/images/prizes/main/02.png')">
-                            <div class="number text impact">
-                                <span>x</span><span>1</span>
+                                <span>x</span><span>4</span>
                             </div>
                         </div>
                     </div>
@@ -109,21 +110,21 @@
                     <div class="prize swiper-slide" data-prize-id="1">
                         <div class="image">
                             <div class="number text impact">
-                                <span>x</span><span>7</span>
+                                <span>x</span><span>50</span>
                             </div>
                         </div>
                     </div>
                     <div class="prize swiper-slide" data-prize-id="2">
                         <div class="image" >
                             <div class="number text impact">
-                                <span>x</span><span>7</span>
+                                <span>x</span><span>20</span>
                             </div>
                         </div>
                     </div>
                     <div class="prize swiper-slide" data-prize-id="3">
                         <div class="image">
                             <div class="number text impact">
-                                <span>x</span><span>7</span>
+                                <span>x</span><span>50</span>
                             </div>
                         </div>
                     </div>
@@ -135,11 +136,13 @@
 
             </div>
         </div>
+        <img src="{{ asset('/images/prizes_bg_1.png') }}" alt="twix bounty" class="bg bg-1">
+        <img src="{{ asset('/images/prizes_bg_2.png') }}" alt="snickers" class="bg bg-2">
     </section>
 
     <section id="winners">
         <div class="container column">
-            <div class="text impact header large">
+            <div class="text header large">
                 @lang('index.header.winners')
             </div>
             <div class="form row text">
@@ -152,7 +155,7 @@
                 </button>
             </div>
             <div class="table column text header medium">
-                <div class="head text impact">
+                <div class="head text">
                     <div class="row">
                         <div class="column">@lang('index.form.phone')</div>
                         <div class="column">@lang('index.form.city')</div>
@@ -166,12 +169,14 @@
     </section>
     <section id="faq">
         <div class="container column">
-            <div class="text impact header large">
+            <div class="text header large">
                 @lang('index.faq.header')
             </div>
-            <div class="text medium">
-                @lang('index.faq.text')
-            </div>
+        </div>
+        <div class="text small faq-text">
+            @lang('index.faq.text')
+        </div>
+        <div class="container column">
             <form action="{{ url("/question") }}" class="form column text medium" method="post">
                 @csrf
                 <div class="row">
@@ -204,7 +209,7 @@
                     <textarea name="question" rows="6" placeholder="@lang('index.form.question')" value="{{ old('question') }}"></textarea>
                 </div>
 
-                <button type="submit" class="button text header impact">@lang('index.actions.send')</button>
+                <button type="submit" class="button text header">@lang('index.actions.send')</button>
             </form>
 
             @foreach(\App\Faq::orderBy('order', 'asc')->get() as $faq)

@@ -11,7 +11,16 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', function () {
+//    $dt = new DateTime('now', new DateTimezone('Asia/Yerevan'));
+//    echo $dt->format('d.M.Y H:i:s');
+//    echo \Carbon\Carbon::now();
+    $now = \Carbon\Carbon::now();
+
+    echo $now->timezone;
+});
+
+//Route::get('/', 'HomeController@index');
 //Route::get('/stores', 'HomeController@stores');
 
 //Route::get('/stores/{type}', 'HomeController@store')->where('type', 'magnum|small|anvar|dina');
@@ -36,7 +45,6 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/get-logout', 'Auth\LoginController@logout');
 });
-
 
 
 Route::middleware(['auth', 'admin'])->group(function() {
