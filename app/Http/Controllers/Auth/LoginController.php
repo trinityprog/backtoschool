@@ -54,13 +54,9 @@ class LoginController extends Controller
 
     public function authorization(Request $request)
     {
-        $data = $request->only(['phone', 'type']);
-
-        $data['phone'] = trim($data['phone'], '_');
-
+        $data = $request->only('phone');
         $validator = Validator::make($data , [
-            'phone' => 'required|size:14|exists:users,email',
-            'type' => 'required'
+            'phone' => 'required|size:16|exists:users,email',
         ]);
         if($validator->fails()){
             return redirect('/#authorization')
@@ -68,7 +64,7 @@ class LoginController extends Controller
         }
         $user = User::where('email', $data['phone'])->first();
 
-        if($user->hasPermission($data['type'])){
+        if($user){
             Auth::login($user);
             return redirect('/');
         }

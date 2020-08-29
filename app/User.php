@@ -40,14 +40,11 @@ class User extends Authenticatable
     public function checks(){
         return $this->hasMany('App\Check');
     }
-    public function hasPermission($type){
-        if($this->type == 'admin'){
-            return true;
-        }
-
-//        if ( strpos($this->type, $type) !== false ){
+//    public function hasPermission($type){
+//        if($this->type == 'admin'){
 //            return true;
 //        }
-        return false;
-    }
+//
+//        return false;
+//    }
 }

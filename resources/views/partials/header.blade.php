@@ -14,7 +14,7 @@
         <a href="{{ url('/#prizes') }}">@lang('index.header.prizes')</a>
         <a href="{{ url('/#winners') }}">@lang('index.header.winners')</a>
         <a href="{{ url('/#faq') }}">@lang('index.faq.header')</a>
-        <a href="@if(Auth::check()){{ url("/profile") }}
+        <a href="@if(Auth::check())#profile
                 @else #authorization @endif">
             @lang('index.header.profile')
         </a>

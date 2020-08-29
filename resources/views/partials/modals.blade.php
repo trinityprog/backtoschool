@@ -1,9 +1,9 @@
 @if(!Auth::check())
     <div class="remodal" data-remodal-id="registration">
         <button data-remodal-action="close" class="remodal-close"></button>
-        <form action="{{ url("/registration") }}" method="POST" class="form column text din medium">
+        <form action="{{ url("/registration") }}" method="POST" class="form column text medium">
             @csrf
-            <h1 class="text impact big header">@lang('index.modals.reg.header')</h1>
+            <h1 class="text big header">@lang('index.modals.reg.header')</h1>
             <div class="column">
                 <div class="input @error('name') error @enderror">
                     <input type="text" name="name" placeholder="@lang('index.form.name')" class="@error('name') error @enderror" value="{{ old('name') }}">
@@ -20,12 +20,12 @@
                     @error('phone') {{ $message }} @enderror
                 </span>
             </div>
-            <button class="button text impact">@lang('index.modals.reg.action')</button>
+            <button class="button text">@lang('index.modals.reg.action')</button>
         </form>
-        <p class="text din tiny">
+        <p class="text tiny">
             @lang('index.modals.reg.text')
         </p>
-        <div class="bottom column text din medium header">
+        <div class="bottom column text medium header">
             @lang('index.modals.reg.bottom')
         </div>
     </div>
@@ -34,7 +34,6 @@
         <button data-remodal-action="close" class="remodal-close"></button>
         <form action="{{ url("/authorization") }}" method="POST" class="form column text medium">
             @csrf
-{{--            <input type="hidden" name="type" value="{{ $type }}">--}}
             <h1 class="text big header">@lang('index.modals.auth.header')</h1>
             <div class="column">
                 <div class="input @error('phone') error @enderror">
@@ -56,68 +55,56 @@
 @else
     <div class="remodal text header" data-remodal-id="check-success">
         <button data-remodal-action="close" class="remodal-close"></button>
-        @lang('index.modals.check')
-
-{{--        @if($type == 'magnum')--}}
-            <a class="icon button text impact g-trigger-register" href="#" data-remodal-action="close">
-                <i class="icon check"></i>
-                @lang('index.actions.upload')
-            </a>
-{{--        @elseif($type == 'small')--}}
-            <a class="button text impact header big g-trigger-register" href="#check">
+        @lang('index.modals.check-success')
+            <a class="button text header big g-trigger-register" href="#check">
                 @lang('index.actions.register_check')
             </a>
-{{--        @endif--}}
 
     </div>
 
-{{--    @if($type == 'small')--}}
         <div class="remodal text header" data-remodal-id="check">
             <button data-remodal-action="close" class="remodal-close"></button>
-            <div class="form-wrapper column">
-                <form class="form text medium din column" action="{{ url('/check') }}">
-                    @csrf
-{{--                    <input type="hidden" value="{{ $type }}">--}}
-                    <h1 class="text impact header">Регистрация чека</h1>
-                    <h2 class="text din header small">Для участия в Акции необходимо зарегистрировать <span class="text yellow">номер чека и номер кассы</span></h2>
-                    <div class="input labelled">
-                        <label for="check">1</label>
-                        <input type="text" name="check" placeholder="Номер чека" id="check">
+            <form class="form text medium column" action="{{ url('/check') }}">
+                @csrf
+                <h1 class="text header">@lang('index.modals.check.top')</h1>
+                <h2 class="text din header small">@lang('index.modals.check.text')</h2>
+                <div class="form-wrap">
+                    <div class="form-items">
+                        <div class="input">
+                            <input type="text" name="check" placeholder="@lang('index.profile.table.check')" id="check">
+                        </div>
+                        <div class="input">
+                            <input type="text" name="cash" placeholder="@lang('index.profile.table.cash')" id="cash">
+                        </div>
+                        <button type="submit" class="button text header g-trigger-register">
+                            @lang('index.actions.register')
+                        </button>
                     </div>
-                    <div class="input labelled">
-                        <label for="cash">2</label>
-                        <input type="text" name="cash" placeholder="Номер кассы" id="cash">
-                    </div>
-                    <button type="submit" class="button text header g-trigger-register">
-                        @lang('index.actions.register')
-                    </button>
-                </form>
-                <div class="text medium header alert din">Обязательно сохрани чек и слип-чек</div>
-            </div>
+                    <div class="text medium header alert">@lang('index.modals.check.save_check')</div>
+                </div>
+            </form>
+
         </div>
 
-{{--    @endif--}}
-
-{{--    @if($type != 'magnum')--}}
         <div class="remodal text header" data-remodal-id="profile">
             <button data-remodal-action="close" class="remodal-close"></button>
             <div class="top column">
-                <h1 class="text impact header">{{ Auth::user()->email }}</h1>
-                <h2 class="text impact header medium">мои чеки из  <i class="icon small"></i></h2>
-                <div class="text alert din small header">Обязательно сохраняй зарегистрированные чеки и слип-чеки</div>
+                <h1 class="text header">{{ Auth::user()->email }}</h1>
+                <h2 class="text header medium">@lang('index.profile.top')<i class="icon yerevan-city"></i></h2>
+                <div class="text alert small header">@lang('index.profile.alert')</div>
             </div>
-            <div class="text din small header column table">
-                <div class="text impact row head">
-                    <div class="column">Дата регистрации</div>
-                    <div class="column">Номер чека</div>
-                    <div class="column">Номер кассы</div>
+            <div class="text small header column table">
+                <div class="text row head">
+                    <div class="column">@lang('index.profile.table.data_reg')</div>
+                    <div class="column">@lang('index.profile.table.check')</div>
+                    <div class="column">@lang('index.profile.table.cash')</div>
                 </div>
                 <div class="body">
                     @foreach(Auth::user()->checks()->get() as $check)
                         <div class="row">
                             <div class="column">{{ $check->created_at->format('d.m.Y') }}</div>
-                            <div class="column">{{ $check->code }}</div>
-                            <div class="column">{{ $check->cash }}</div>
+                            <div class="column">{{ $check->no_check }}</div>
+                            <div class="column">{{ $check->no_kassa }}</div>
                         </div>
                     @endforeach
                     @for($i = 0 ; $i < 8 - count(Auth::user()->checks); $i++)
@@ -125,11 +112,10 @@
                     @endfor
                 </div>
             </div>
-            <a class="button text impact header medium g-trigger-register" href="#check">
+            <a class="button text header medium g-trigger-register" href="#check">
                 @lang('index.actions.register_check')
             </a>
         </div>
-{{--    @endif--}}
 
 @endif
 

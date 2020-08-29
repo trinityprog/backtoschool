@@ -51,7 +51,7 @@
         </div>
         <div class="bottom">
             <div class="container column">
-                <a class="icon button text header big g-trigger-register" href="@auth{{ url("/profile") }}@else #authorization @endauth">@lang('index.actions.upload')</a>
+                <a class="icon button text header big g-trigger-register" href="@auth #profile @else #authorization @endauth">@lang('index.actions.upload')</a>
             </div>
         </div>
 

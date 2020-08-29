@@ -2157,7 +2157,7 @@ input, textarea {
   color: #a2a2a2;
   line-height: 1em;
   width: 100%;
-  padding: 0.3125em 0.5em 0.40625em;
+  padding: 0.2em 0.5em 0.3em;
   border-radius: 0.3125em;
   resize: none;
   transition: all 0.2s ease;
@@ -2281,7 +2281,7 @@ header .burger line:nth-child(3) {
   transform: translateY(57px);
 }
 header .container {
-  width: 1340px;
+  width: 1360px;
   position: unset;
   height: 67px;
   align-items: center;
@@ -2308,6 +2308,7 @@ header .container a:not(.button) {
   position: relative;
   z-index: 5;
   color: #3c1400;
+  font-size: 2.3rem;
 }
 header .container a:not(.button).active {
   color: #fbaf1a;
@@ -3052,116 +3053,6 @@ header .mobile {
   transform: translateY(0);
 }
 
-#profile {
-  width: 100vw;
-  min-height: 800px;
-  height: calc(100vh - 17.5rem);
-  text-align: center;
-}
-#profile .container {
-  justify-content: space-between;
-}
-#profile .container > .column {
-  position: relative;
-  padding-top: 10rem;
-  width: 53rem;
-  background: #2d0f00;
-}
-#profile .container > .column:first-child {
-  background: none;
-  width: 73rem;
-}
-#profile h1 {
-  font-size: 3.6rem;
-  line-height: 3.6rem;
-  margin-bottom: 1.5rem;
-}
-#profile .box {
-  width: 51rem;
-  align-self: flex-end;
-  align-items: center;
-}
-#profile .box p {
-  margin-top: 3rem;
-}
-#profile .box .button {
-  font-size: 3.2rem;
-  padding: 0 1.2em;
-}
-#profile .dropzone {
-  padding: 0 0 0 9rem;
-  align-items: center;
-  justify-content: center;
-  color: #727272;
-  width: 60rem;
-  height: 35rem;
-  align-self: flex-end;
-  border-radius: 0.85em;
-  margin: 5rem 0 2.6rem;
-  position: relative;
-  border: none;
-}
-#profile .dropzone:before {
-  content: "";
-  position: absolute;
-  width: 22.1rem;
-  height: 40.5rem;
-  top: -2.2rem;
-  left: -13.1rem;
-  background: url(/images/example.png) center/contain no-repeat;
-  -webkit-filter: drop-shadow(1.2rem 1.2rem 0.2rem rgba(0, 0, 0, 0.5));
-          filter: drop-shadow(1.2rem 1.2rem 0.2rem rgba(0, 0, 0, 0.5));
-}
-#profile .dropzone .icon {
-  background: #727272;
-  margin-bottom: 0.8em;
-}
-#profile .dropzone .dz-message {
-  display: flex !important;
-  align-items: center;
-}
-#profile .dropzone .dz-preview {
-  display: none;
-}
-#profile .dropzone.dz-max-files-reached {
-  color: #3c1400;
-  background: #fbaf1a;
-}
-#profile .dropzone.dz-max-files-reached .icon {
-  background: #3c1400;
-}
-#profile .table {
-  margin-top: 2rem;
-  position: relative;
-  overflow: auto;
-  height: calc(100vh - 19.5rem);
-}
-#profile .table .column {
-  width: 50%;
-  align-items: center;
-}
-#profile .table .row {
-  align-items: center;
-}
-#profile .table .head {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  background: #fbaf1a;
-  color: #3c1400;
-  height: 1.6em;
-  min-height: 1.6em;
-}
-#profile .table .body .row {
-  height: 1.8em;
-}
-#profile .table .body .row:nth-child(even) {
-  background-color: #3c1400;
-}
-#profile .yellow.button {
-  display: none;
-}
-
 footer {
   width: 100vw;
   background-color: #2d0f00;
@@ -3271,7 +3162,7 @@ footer a:hover .icon {
 }
 .remodal[data-remodal-id=registration] .form h1 {
   font-size: 4.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 .remodal[data-remodal-id=registration] .form .column {
   margin-bottom: 1.7rem;
@@ -3453,63 +3344,65 @@ footer a:hover .icon {
   font-size: 3.2rem;
 }
 .remodal[data-remodal-id=check] {
-  padding: 4.8rem 0 6.6rem;
-  width: 68rem;
+  padding: 5rem 0;
+  width: 62rem;
+  overflow: visible;
 }
-.remodal[data-remodal-id=check] .form-wrapper {
-  width: 44rem;
-  margin: 0 0 0 auto;
-}
-.remodal[data-remodal-id=check] .form-wrapper:before {
-  content: "";
-  position: absolute;
-  width: 20rem;
-  height: 46.7rem;
-  background: url(/images/examples/small.png) center/contain no-repeat;
-  top: 4rem;
-  left: 4.4rem;
-}
-.remodal[data-remodal-id=check] .form-wrapper .form {
-  padding: 0 5.2rem 0 3.2rem;
-  font-size: 3.2rem;
-}
-.remodal[data-remodal-id=check] h1 {
+.remodal[data-remodal-id=check] form h1 {
   font-size: 4.2rem;
   line-height: 4.2rem;
   margin-bottom: 1.5rem;
 }
-.remodal[data-remodal-id=check] h2 {
+.remodal[data-remodal-id=check] form h2 {
   margin-bottom: 2rem;
 }
-.remodal[data-remodal-id=check] .input {
+.remodal[data-remodal-id=check] form .input {
   margin-bottom: 1.7rem;
 }
-.remodal[data-remodal-id=check] .alert {
+.remodal[data-remodal-id=check] form .alert {
   width: 100%;
   background: #fbaf1a;
   color: #3c1400;
   line-height: 1.375em;
   margin-top: 1em;
 }
+.remodal[data-remodal-id=check] form .form-wrap {
+  margin-left: 22.6rem;
+  position: relative;
+}
+.remodal[data-remodal-id=check] form .form-wrap .form-items {
+  padding: 0 3.6rem 0 1.8rem;
+}
+.remodal[data-remodal-id=check] form .form-wrap:before {
+  content: "";
+  position: absolute;
+  width: 20rem;
+  height: 37.7rem;
+  background: url(/images/example.png) center/contain no-repeat;
+  top: -1.2rem;
+  right: 100%;
+}
 .remodal[data-remodal-id=profile] {
-  width: 53rem;
+  width: 56rem;
   padding: 5.2rem 0 5rem;
 }
 .remodal[data-remodal-id=profile] h1 {
   font-size: 4.2rem;
   line-height: 4.2rem;
-  margin-bottom: 2rem;
 }
 .remodal[data-remodal-id=profile] h2 {
   font-size: 3.2rem;
   line-height: 4.2rem;
-  margin-bottom: 2.3rem;
+  margin: 2.5rem 0;
+}
+.remodal[data-remodal-id=profile] h2 .icon {
+  margin-left: 1.5rem;
 }
 .remodal[data-remodal-id=profile] .top {
-  padding: 0 6.2rem 0 5.2rem;
+  padding: 0 2.4rem;
 }
 .remodal[data-remodal-id=profile] .alert {
-  background: white;
+  background: #fbaf1a;
   color: #3c1400;
   padding: 0.4em 0;
 }
@@ -3521,27 +3414,36 @@ footer a:hover .icon {
   width: fit-content;
 }
 .remodal[data-remodal-id=profile] .table {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   position: relative;
   overflow: auto;
+  border-bottom: 0.4rem solid #2d0f00;
 }
 .remodal[data-remodal-id=profile] .table .column {
   align-items: center;
+  font-size: 1.8rem;
 }
 .remodal[data-remodal-id=profile] .table .row {
   align-items: center;
+  font-size: 1.8rem;
 }
 .remodal[data-remodal-id=profile] .table .head {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background: #fbaf1a;
+  background: white;
   color: #3c1400;
   height: 1.6em;
   min-height: 1.6em;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
 }
 .remodal[data-remodal-id=profile] .table .body .row {
-  height: 1.8em;
+  height: 4.2rem;
+}
+.remodal[data-remodal-id=profile] .table .body .row:nth-child(odd) {
+  background: #2d0f00;
 }
 .remodal.legal {
   width: 55rem;

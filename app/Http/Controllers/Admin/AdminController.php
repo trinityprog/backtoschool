@@ -62,23 +62,4 @@ class AdminController extends Controller
         $dates_user .= ']';
         return view('admin/dashboard', compact('counts', 'dates', 'counts_user', 'dates_user'));
     }
-    public function settings(){
-        return view('admin/settings');
-    }
-    public function timezone(Request $request){
-        $requestData = $request->all();
-
-        $file = file_get_contents(app_path('Providers/AppServiceProvider.php'));
-        $length = strpos($file, ' //datetime') - 474;
-        $dd = substr_replace($file, 'date_default_timezone_set("'. $requestData['time'] .'");', 474, $length);
-        file_put_contents(app_path('Providers/AppServiceProvider.php'), $dd);
-        return redirect()->back()->with('flash_message', 'Время обновлено');
-    }
-    public function date(Request $request){
-        $file = file_get_contents(app_path('Http/Middleware/Date.php'));
-        $length = strpos($file, ' // datetime') - 344;
-        $dd = substr_replace($file, 'if($myTime > "'. $request->time .' 00:00:00") { ', 344, $length);
-        file_put_contents(app_path('Http/Middleware/Date.php    '), $dd);
-        return redirect()->back()->with('flash_message', 'Время обновлено');
-    }
 }

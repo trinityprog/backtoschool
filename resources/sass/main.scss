@@ -194,7 +194,7 @@ input, textarea{
     color: $gray;
     line-height: 1em;
     width: 100%;
-    padding: 0.3125em 0.5em 0.40625em;
+    padding: 0.2em 0.5em 0.3em;
     border-radius: 0.3125em;
 
     resize: none;
@@ -315,7 +315,7 @@ header{
         }
     }
     .container{
-        width: 1340px;
+        width: 1360px;
         position: unset;
         height: 67px;
         align-items: center;
@@ -340,6 +340,7 @@ header{
                 position: relative;
                 z-index: 5;
                 color: $brown;
+                font-size: 2.3rem;
                 &.active{
                     color: $yellow;
                 }
@@ -1131,116 +1132,7 @@ header{
     }
 }
 
-#profile{
-    width: 100vw;
-    min-height: 800px;
-    height: calc(100vh - 17.5rem);
-    text-align: center;
-    .container{
-        justify-content: space-between;
-        >.column{
-            position: relative;
-            padding-top: 10rem;
-            width: 53rem;
-            background: $darkBrown;
-            &:first-child{
-                background: none;
-                width: 73rem;
-            }
-        }
-    }
-    h1{
-        font-size: 3.6rem;
-        line-height: 3.6rem;
-        margin-bottom: 1.5rem;
-    }
 
-    .box{
-        width: 51rem;
-        align-self: flex-end;
-        align-items: center;
-        p{
-            margin-top: 3rem;
-        }
-        .button{
-            font-size: 3.2rem;
-            padding: 0 1.2em;
-        }
-    }
-    .dropzone{
-        padding: 0 0 0 9rem;
-        align-items: center;
-        justify-content: center;
-        color: $darkGray;
-        width: 60rem;
-        height: 35rem;
-        align-self: flex-end;
-        border-radius: 0.85em;
-        margin: 5rem 0 2.6rem;
-        position: relative;
-        border: none;
-        &:before{
-            content: '';
-            position: absolute;
-            width: 22.1rem;
-            height: 40.5rem;
-            top: -2.2rem;
-            left: -13.1rem;
-            background: url(/images/example.png) center / contain no-repeat;
-            filter: drop-shadow( 1.2rem 1.2rem 0.2rem rgba(0, 0, 0, 0.5));
-        }
-        .icon{
-            background: $darkGray;
-            margin-bottom: 0.8em;
-        }
-        .dz-message{
-            display: flex!important;
-            align-items: center;
-        }
-        .dz-preview{
-            display: none;
-        }
-        &.dz-max-files-reached{
-            color: $brown;
-            background: $yellow;
-            .icon{
-                background: $brown;
-            }
-        }
-    }
-    .table{
-        margin-top: 2rem;
-        position: relative;
-        overflow: auto;
-        height: calc(100vh - 19.5rem);
-        .column{
-            width: 50%;
-            align-items: center;
-        }
-        .row{
-            align-items: center;
-        }
-        .head{
-            position: sticky;
-            top: 0;
-            background: $yellow;
-            color: $brown;
-            height: 1.6em;
-            min-height: 1.6em;
-        }
-        .body{
-            .row{
-                height: 1.8em;
-                &:nth-child(even){
-                    background-color: $brown;
-                }
-            }
-        }
-    }
-    .yellow.button{
-        display: none;
-    }
-}
 
 footer{
     width: 100vw;
@@ -1348,7 +1240,7 @@ footer{
             font-size: 3.2rem;
             h1{
                 font-size: 4.2rem;
-                margin-bottom: 2rem;
+                margin-bottom: 2.5rem;
             }
             .column{
                 margin-bottom: 1.7rem;
@@ -1534,62 +1426,66 @@ footer{
         }
     }
     &[data-remodal-id="check"]{
-        padding: 4.8rem 0 6.6rem;
-        width: 68rem;
-        .form-wrapper{
-            width: 44rem;
-            margin: 0 0 0 auto;
-            &:before{
-                content: '';
-                position: absolute;
-                width: 20rem;
-                height: 46.7rem;
-                background: url(/images/examples/small.png) center / contain no-repeat;
-                top: 4rem;
-                left: 4.4rem;
+        padding: 5rem 0;
+        width: 62rem;
+        overflow: visible;
+        form{
+            h1{
+                font-size: 4.2rem;
+                line-height: 4.2rem;
+                margin-bottom: 1.5rem;
             }
-            .form{
-                padding: 0 5.2rem 0 3.2rem;
-                font-size: 3.2rem;
+            h2{
+                margin-bottom: 2rem;
             }
-        }
-        h1{
-            font-size: 4.2rem;
-            line-height: 4.2rem;
-            margin-bottom: 1.5rem;
-        }
-        h2{
-            margin-bottom: 2rem;
-        }
-        .input{
-            margin-bottom: 1.7rem;
-        }
-        .alert{
-            width: 100%;
-            background: $yellow;
-            color: $brown;
-            line-height: 1.375em;
-            margin-top: 1em;
+            .input{
+                margin-bottom: 1.7rem;
+            }
+            .alert{
+                width: 100%;
+                background: $yellow;
+                color: $brown;
+                line-height: 1.375em;
+                margin-top: 1em;
+            }
+            .form-wrap{
+                margin-left: 22.6rem;
+                position: relative;
+                .form-items{
+                    padding: 0 3.6rem 0 1.8rem;
+                }
+                &:before{
+                    content: '';
+                    position: absolute;
+                    width: 20rem;
+                    height: 37.7rem;
+                    background: url(/images/example.png) center / contain no-repeat;
+                    top: -1.2rem;
+                    right: 100%;
+                }
+            }
         }
     }
     &[data-remodal-id="profile"]{
-        width: 53rem;
+        width: 56rem;
         padding: 5.2rem 0 5rem;
         h1{
             font-size: 4.2rem;
             line-height: 4.2rem;
-            margin-bottom: 2rem;
         }
         h2{
             font-size: 3.2rem;
             line-height: 4.2rem;
-            margin-bottom: 2.3rem;
+            margin: 2.5rem 0;
+            .icon{
+                margin-left: 1.5rem;
+            }
         }
         .top{
-            padding: 0 6.2rem 0 5.2rem;
+            padding: 0 2.4rem;
         }
         .alert{
-            background: white;
+            background: $yellow;
             color: $brown;
             padding: 0.4em 0;
         }
@@ -1599,30 +1495,35 @@ footer{
             width: fit-content;
         }
         .table{
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             position: relative;
             overflow: auto;
+            border-bottom: .4rem solid $darkBrown;
             .column{
                 align-items: center;
-                &:nth-child(1){}
+                font-size: 1.8rem;
             }
             .row{
                 align-items: center;
+                font-size: 1.8rem;
             }
             .head{
                 position: sticky;
                 top: 0;
-                background: $yellow;
+                background: white;
                 color: $brown;
                 height: 1.6em;
                 min-height: 1.6em;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 2rem;
             }
             .body{
                 .row{
-                    height: 1.8em;
-                    //&:nth-child(add){
-                    //  background-color: $darkBrown;
-                    //}
+                    height: 4.2rem;
+                    &:nth-child(odd){
+                        background: $darkBrown;
+                    }
                 }
             }
         }

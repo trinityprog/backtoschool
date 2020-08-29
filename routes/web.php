@@ -11,20 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-//    $dt = new DateTime('now', new DateTimezone('Asia/Yerevan'));
-//    echo $dt->format('d.M.Y H:i:s');
-//    echo \Carbon\Carbon::now();
-    $now = \Carbon\Carbon::now();
 
-    echo $now->timezone;
-});
 
-//Route::get('/', 'HomeController@index');
-//Route::get('/stores', 'HomeController@stores');
-
-//Route::get('/stores/{type}', 'HomeController@store')->where('type', 'magnum|small|anvar|dina');
-
+Route::get('/', 'HomeController@index');
 
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -50,9 +39,6 @@ Route::middleware(['auth'])->group(function() {
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin', 'Admin\AdminController@index');
     Route::get('/admin/dashboard', 'Admin\AdminController@index');
-    Route::get('/admin/settings', 'Admin\AdminController@settings');
-    Route::post('/timezone', 'Admin\AdminController@timezone');
-    Route::post('/date', 'Admin\AdminController@date');
 
 
     Route::get('/admin/users', 'Admin\UsersController@index');
@@ -75,21 +61,3 @@ Route::middleware(['auth', 'admin'])->group(function() {
 });
 
 
-//Route::get('mail', function () {
-//    $question = new \App\Question();
-//    $question->question = "test";
-//    $question->name = "Yernat";
-//    $question->email = "ernat.31.07.97@gmail.com";
-//    $question->phone = "+77079682878";
-//    $question->answer = "qweqwe";
-//    return new App\Mail\QuestionCreated($question);
-//});
-//Route::get('/setTypes', function(){
-//    $faqs = \App\Faq::all();
-//
-//    foreach ($faqs as $faq){
-//        $faq->type = "magnum";
-//        $faq->save();
-//    }
-//
-//});
