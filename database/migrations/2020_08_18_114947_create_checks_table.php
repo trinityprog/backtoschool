@@ -17,7 +17,7 @@ class CreateChecksTable extends Migration
             $table->string('check');
             $table->string('cash');
             $table->integer('status')->default(0);
-            $table->string('type')->default('web');
+            $table->string('from')->default('web');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 //            $table->integer('sms_id')->unsigned()->nullable();

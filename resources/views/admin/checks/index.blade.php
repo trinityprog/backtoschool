@@ -27,10 +27,11 @@
                                 <option value="Принят" {{(request()->has('status') && request()->input('status') == 'Принят' ? 'selected' : '')}}>Принят</option>
                                 <option value="Отклонен" {{(request()->has('status') && request()->input('status') == 'Отклонен' ? 'selected' : '')}}>Отклонен</option>
                             </select>
-
-                            <select name="type" class="form-control">
-                                <option value="" {{(request()->has('type') && request()->input('type') == '' ? 'selected' : '')}}>Выберите магазин</option>
-                                <option {{(request()->has('type') && request()->input('type') == 'magnum' ? 'selected' : '')}}>magnum</option>
+s
+                            <select name="from" class="form-control">
+                                <option value="" {{(request()->has('from') && request()->input('from') == '' ? 'selected' : '')}}>Выберите магазин</option>
+                                <option {{(request()->has('from') && request()->input('from') == 'web' ? 'selected' : '')}}>web</option>
+                                <option {{(request()->has('from') && request()->input('from') == 'sms' ? 'selected' : '')}}>sms</option>
                             </select>
                             <label>
                                 <input class="search" type="text" name="search" placeholder="Поиск" value="{{ request('search') }}">
@@ -67,8 +68,11 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Магазин</th>
-                    <th>Данные</th><th>Имя</th><th>Телефон</th>
+                    <th>Дата/Время</th>
+                    <th>Номер чека и кассы</th>
+                    <th>Вид</th>
+                    <th>Имя</th>
+                    <th>Телефон</th>
                     <th>Статус</th>
                     <th style="text-align: right">Действия</th>
                 </tr>
@@ -77,17 +81,25 @@
                 @foreach($checks as $item)
                     <tr >
                         <td style="border-left: 5px solid @if($item->status == 'Принят') mediumseagreen @elseif($item->status == 'Отклонен') red @else orange; padding-left: 5px @endif">{{ $loop->iteration }}</td>
-                        <td>{{ $item->type }}</td>
-                        <td>
-                            @if($item->type == 'magnum')
-                                <a href="{{ url('i/'.$item->photo ) }}" data-lightbox="image" data-title="{{$item->phone}} / {{$item->status}}">Посмотреть фото</a>
-                            @else
-                            @endif
-                        </td>
-
+                        <td>{{ $item->created_at->format('d.M.Y H:i:s') }}</td>
+                        <td>{{ $item->check . " " . $item->cash }}</td>
+                        <td>{{ $item->from }}</td>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->user->email }}</td>
-                        <td>{{ $item->status }}</td>
+                        <td>{{ $item->user->status }}</td>
+                        <td>
+                            @switch($item->status)
+                                @case(0)
+                                    {{ 'Не проверено' }}
+                                @break
+                                @case(1)
+                                    {{ 'Принят' }}
+                                @break
+                                @case(2)
+                                    {{ 'Отклонен' }}
+                                @break
+                            @endswitch
+                        </td>
                         <td style="text-align: right">
                             <a href="{{ url('/admin/checks/' . $item->id . '/edit') }}" title="Edit Brand"><button class="btn btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Изменить</button></a>
                             <form method="POST" action="{{ url('/admin/checks' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

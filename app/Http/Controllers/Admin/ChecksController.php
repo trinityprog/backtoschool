@@ -20,11 +20,13 @@ class ChecksController extends Controller
 
     public function index(Request $request)
     {
-        $whereParameters = [];
+        $whereParameters = [
+            ['status', '!=' , -1],
+        ];
         $keyword = $request->get('search');
         $filter = $request->get('filter');
         $status = $request->get('status');
-        $type = $request->get('type');
+        $from = $request->get('from');
         $perPage = 25;
         $fc = 0;
         if(!empty($filter)){
@@ -44,7 +46,7 @@ class ChecksController extends Controller
 
         if(!empty($type)){
             array_push($whereParameters,
-                ['type', '=', $type]
+                ['from', '=', $from]
             );
         }
 
