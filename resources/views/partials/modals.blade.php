@@ -71,17 +71,18 @@
 
         <div class="remodal text header" data-remodal-id="check">
             <button data-remodal-action="close" class="remodal-close"></button>
-            <form class="form text medium column" action="{{ url('/check') }}">
+            <form class="form text medium column" action="{{ url('/check') }}" method="POST">
                 @csrf
+{{--                {{ $errors }}--}}
                 <h1 class="text header">@lang('index.modals.check.top')</h1>
                 <h2 class="text din header small">@lang('index.modals.check.text')</h2>
                 <div class="form-wrap">
                     <div class="form-items">
-                        <div class="input">
+                        <div class="input @error('check') error @enderror">
                             <input type="text" name="check" placeholder="@lang('index.profile.table.check')" id="check">
                         </div>
-                        <div class="input">
-                            <input type="text" name="cash" placeholder="@lang('index.profile.table.cash')" id="cash">
+                        <div class="input @error('cash') error @enderror">
+                            <input type="text" name="cash"  placeholder="@lang('index.profile.table.cash')" id="cash">
                         </div>
                         <button type="submit" class="button text header g-trigger-register">
                             @lang('index.actions.register')
@@ -110,8 +111,8 @@
                     @foreach(Auth::user()->checks()->get() as $check)
                         <div class="row">
                             <div class="column">{{ $check->created_at->format('d.m.Y') }}</div>
-                            <div class="column">{{ $check->no_check }}</div>
-                            <div class="column">{{ $check->no_kassa }}</div>
+                            <div class="column">{{ $check->check }}</div>
+                            <div class="column">{{ $check->cash }}</div>
                         </div>
                     @endforeach
                     @for($i = 0 ; $i < 8 - count(Auth::user()->checks); $i++)

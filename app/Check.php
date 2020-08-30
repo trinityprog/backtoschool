@@ -25,7 +25,7 @@ class Check extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'sms_id', 'status', 'user_id', 'type', 'code', 'cash'];
+    protected $fillable = ['user_id', 'sms_id', 'status', 'user_id', 'type', 'check', 'cash'];
 
     public function user() {
         return $this->belongsTo(User::Class);

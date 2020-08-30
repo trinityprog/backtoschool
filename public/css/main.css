@@ -3493,11 +3493,12 @@ footer a:hover .icon {
 }
 .remodal[data-remodal-id=profile] .table .column {
   align-items: center;
+  width: 15rem;
   font-size: 1.8rem;
 }
 .remodal[data-remodal-id=profile] .table .row {
   align-items: center;
-  font-size: 1.8rem;
+  justify-content: space-evenly;
 }
 .remodal[data-remodal-id=profile] .table .head {
   position: -webkit-sticky;
@@ -3505,11 +3506,8 @@ footer a:hover .icon {
   top: 0;
   background: white;
   color: #3c1400;
-  height: 1.6em;
+  height: 1.95em;
   min-height: 1.6em;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2rem;
 }
 .remodal[data-remodal-id=profile] .table .body .row {
   height: 4.2rem;

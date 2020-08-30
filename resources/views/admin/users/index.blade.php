@@ -21,9 +21,10 @@
                                 <input type="text" class="filterdate" name="filter" value="{{ (request()->has('filter')) ? request()->input('filter') : \Carbon\Carbon::createFromDate('20.08.2020')->format('d.m.Y') .' - '.\Carbon\Carbon::now()->format('d.m.Y') }}">
                             </label>
 
-                            <select name="type" class="form-control">
-                                <option value="" {{(request()->has('type') && request()->input('type') == '' ? 'selected' : '')}}>Выберите магазин</option>
-                                <option {{(request()->has('type') && request()->input('type') == 'magnum' ? 'selected' : '')}}>magnum</option>
+                            <select name="from" class="form-control">
+                                <option value="" {{(request()->has('from') && request()->input('from') == '' ? 'selected' : '')}}>Выберите тип</option>
+                                <option {{(request()->has('from') && request()->input('from') == 'web' ? 'selected' : '')}}>web</option>
+                                <option {{(request()->has('from') && request()->input('from') == 'sms' ? 'selected' : '')}}>sms</option>
                             </select>
                             <label>
                                 <input class="search" type="text" name="search" placeholder="Поиск" value="{{ request('search') }}">
@@ -38,7 +39,7 @@
                     <div class="right">
                         <a href="{{ url('/admin/users/export/'.
                                     '?filter=' . ((request()->has('filter')) ? request('filter') : '') .
-                                    '&type=' . ((request()->has('type')) ? request('type') : '')) .
+                                    '&from=' . ((request()->has('from')) ? request('from') : '')) .
                                     '&search=' . ((request()->has('search')) ? request('search') : '')
                                     }}" class="export-import">
                             <svg xmlns="http://www.w3.org/2000/svg" width="9.027" height="12.035" viewBox="0 0 9.027 12.035">
@@ -47,7 +48,7 @@
                                     <path d="M162.2,1.44V6.77h.752V1.44l1.615,1.615.532-.532L162.574,0l-2.523,2.523.532.532Z" transform="translate(-89.169 0)" fill="#fff"/>
                                 </g>
                             </svg>
-                            {{ (request()->has('filter') || (request()->has('search')) || (request()->has('type')))  ? 'Экспорт фильтра' : 'Экспорт' }}
+                            {{ (request()->has('filter') || (request()->has('search')) || (request()->has('from')))  ? 'Экспорт фильтра' : 'Экспорт' }}
                         </a>
                     </div>
                 </div>
@@ -59,25 +60,38 @@
                 <thead>
                 <tr>
                     <th>#</th>
+                    <th>Дата регистрации</th>
                     <th>Имя</th>
                     <th>Телефон</th>
-                    <th>Магазин</th>
+                    <th>Тип</th>
                     <th>Чеки</th>
-{{--                    <th style="text-align: right">Действия</th>--}}
+                    <th style="text-align: right">Действия</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($users as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->created_at->format('d.m.Y') }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td>{{ $item->type }}</td>
+                        <td>
+                            <a href="{{ url("/admin/checks?search=" . $item->email) }}">
+                                {{ $item->email }}
+                            </a>
+                        </td>
+                        <td>{{ $item->from }}</td>
                         <td>
                             <a href="{{ url("/admin/checks?search=" . $item->email) }}">
                                 {{ $item->checks->count() }}
                             </a>
 
+                        </td>
+                        <td style="text-align: right">
+                            <form method="POST" action="{{ url('/admin/user' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Brand" onclick="return confirm(&quot;Точно?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Удалить</button>
+                            </form>
                         </td>
 {{--                        <td style="text-align: right">--}}
 {{--                            <a href="{{ url('/admin/users/' . $item->id . '/edit') }}" title="Edit Brand"><button class="btn btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Изменить</button></a>--}}
@@ -91,7 +105,7 @@
                 'search' => Request::get('search'),
                 'date-from' => Request::get('date-from'),
                 'date-to' => Request::get('date-to'),
-                'type' => Request::get('type'),
+                'from' => Request::get('from'),
                 ])->render() !!} </div>
         </div>
     </div>
@@ -104,12 +118,12 @@
         <table>
             <thead>
                 <tr>
-                    <th>name</th><th>email</th><th>type</th>
+                    <th>name</th><th>email</th><th>from</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Name</td><td>Email</td><td>Type</td>
+                    <td>Name</td><td>Email</td><td>from</td>
                 </tr>
             </tbody>
         </table>

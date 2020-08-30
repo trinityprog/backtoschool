@@ -41,7 +41,7 @@ class User extends Authenticatable
         return $this->hasMany(Sms::Class);
     }
     public function checks() {
-        return $this->hasMany(Check::Class);
+        return $this->hasMany(Check::Class)->where('status', '>' , -1);
     }
 //    public function hasPermission($type){
 //        if($this->type == 'admin'){

@@ -35,6 +35,7 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithEvents, WithHea
         return [
             $user->id,
             $user->created_at,
+            $user->from,
             $user->name,
             $user->email,
             $user->checks_count
@@ -43,7 +44,7 @@ class UsersExport implements FromCollection, ShouldAutoSize, WithEvents, WithHea
 
     public function headings(): array
     {
-        return ['ID', 'Дата', 'Имя', 'Телефон', 'Чеки'];
+        return ['ID', 'Дата','Статус', 'Имя', 'Телефон', 'Чеки'];
     }
 
         /**

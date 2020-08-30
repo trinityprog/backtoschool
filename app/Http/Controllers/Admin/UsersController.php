@@ -21,10 +21,11 @@ class UsersController extends Controller
     {
         $whereParameters = [
             ['type', '!=' , 'admin'],
+            ['status', '!=' , -1],
         ];
         $keyword = $request->get('search');
         $filter = $request->get('filter');
-        $type = $request->get('type');
+        $from = $request->get('from');
         $perPage = 25;
         $fc = 0;
         if(!empty($filter)){
@@ -36,9 +37,9 @@ class UsersController extends Controller
                 ['created_at', '<', $date_to . ' 23:59:59']);
         }
 
-        if(!empty($type)){
+        if(!empty($from)){
             array_push($whereParameters,
-                ['type', 'LIKE', "%$type%"]
+                ['from', 'LIKE', "%$from%"]
             );
         }
         if(!empty($keyword)){
@@ -61,10 +62,11 @@ class UsersController extends Controller
     public function export(Request $request){
         $whereParameters = [
             ['type', '!=' , 'admin'],
+            ['status', '!=' , -1],
         ];
         $keyword = $request->get('search');
         $filter = $request->get('filter');
-        $type = $request->get('type');
+        $from = $request->get('from');
         $perPage = 25;
         $fc = 0;
         if(!empty($filter)){
@@ -78,7 +80,7 @@ class UsersController extends Controller
 
         if(!empty($type)){
             array_push($whereParameters,
-                ['type', 'LIKE', "%$type%"]
+                ['from', 'LIKE', "%$from%"]
             );
         }
         if(!empty($keyword)){
@@ -171,10 +173,12 @@ class UsersController extends Controller
 //    }
 //
 //
-//    public function destroy(Request $request, $id)
-//    {
-//        User::destroy($id);
-//
-//        return redirect('admin/users')->with('flash_message', 'User deleted!');
-//    }
+    public function destroy(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->status = -1;
+        $user->save();
+
+        return redirect('admin/users')->with('flash_message', 'User deleted!');
+    }
 }

@@ -28,6 +28,15 @@ class DatabaseSeeder extends Seeder
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
         ]);
+        DB::table('users')->insert([
+            'name' => 'Test',
+            'email' => '+374 70 52 98 21',
+            'from' => 'sms',
+            'password' =>Str::random(12),
+            'remember_token' => Str::random(10),
+            'created_at' => \Carbon\Carbon::now(),
+            'updated_at' => \Carbon\Carbon::now()
+        ]);
         DB::table('faqs')->insert([
             'order' => '1',
             'question' => 'Ո՞Վ ԿԱՐՈՂ Է ՄԱՍՆԱԿՑԵԼ ԱԿՑԻԱՅԻՆ',

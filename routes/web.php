@@ -13,6 +13,10 @@
 
 
 
+//Route::get('/', function () {
+//    return \App\User::with('checks')->withCount('checks')->get();
+
+//});
 Route::get('/', 'HomeController@index');
 Route::get('sms', 'SMSController@index');
 
@@ -30,8 +34,7 @@ Route::post('/registration', 'Auth\RegisterController@registration');
 Route::post('/authorization', 'Auth\LoginController@authorization');
 
 Route::middleware(['auth'])->group(function() {
-    Route::post('/checks', 'Admin\ChecksController@store');
-    Route::get('/profile', 'HomeController@profile');
+    Route::post('/check', 'Admin\ChecksController@store');
 
     Route::get('/get-logout', 'Auth\LoginController@logout');
 });
@@ -43,6 +46,7 @@ Route::middleware(['auth', 'admin'])->group(function() {
 
 
     Route::get('/admin/users', 'Admin\UsersController@index');
+    Route::delete('/admin/user/{id}', 'Admin\UsersController@destroy');
     Route::get('/admin/users/export', 'Admin\UsersController@export');
 
     Route::get('/admin/checks/export', 'Admin\ChecksController@export');

@@ -70,38 +70,56 @@ class ChecksController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->only(['photo']) , [
-            'photo' => 'file|max:4000|mimes:jpeg,png'
+        $data = $request->only(['check', 'cash']);
+        $validator = Validator::make($data , [
+            'check' => 'required',
+            'cash' => 'required'
+        ]);
+        if($validator->fails()){
+            return redirect('/#check')
+                ->withErrors($validator)->withInput();
+        }
+        $data = $validator->validated();
+
+        $check = Check::create([
+            'check' => $data['check'],
+            'cash' => $data['cash'],
+            'user_id' => Auth::id()
         ]);
 
-        if($validator->fails()){
-            if(Auth::user()->type == 'admin'){
-                return redirect('/#authorization')
-                    ->withErrors($validator)->withInput();
-            }
-            else{
-                response()->json([], 500);
-            }
-        }
-        $requestData = $request->all();
-        if ($request->hasFile('photo')) {
-            $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
-            $requestData['status'] = 'Не проверено';
-            $requestData['user_id'] = Auth::id();
-        }
+        return redirect('/#check-success');
+//        $validator = Validator::make($request->only(['photo']) , [
+//            'photo' => 'file|max:4000|mimes:jpeg,png'
+//        ]);
 
-        $check = Check::create($requestData);
+//        if($validator->fails()){
+//            if(Auth::user()->type == 'admin'){
+//                return redirect('/#authorization')
+//                    ->withErrors($validator)->withInput();
+//            }
+//            else{
+//                response()->json([], 500);
+//            }
+//        }
+//        $requestData = $request->all();
+//        if ($request->hasFile('photo')) {
+//            $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
+//            $requestData['status'] = 'Не проверено';
+//            $requestData['user_id'] = Auth::id();
+//        }
 
-        if(Auth::user()->type == 'admin'){
-            return redirect('admin/checks')->with('flash_message', 'Check added!');
-        }
-        else{
-            $check = $check->toArray();
-            $check['created_at'] = (new Carbon($check['created_at']))->format('d.m.Y');
-            return response()->json([
-                'check' => $check,
-            ], 200);
-        }
+//        $check = Check::create($requestData);
+
+//        if(Auth::user()->type == 'admin'){
+//            return redirect('admin/checks')->with('flash_message', 'Check added!');
+//        }
+//        else{
+//            $check = $check->toArray();
+//            $check['created_at'] = (new Carbon($check['created_at']))->format('d.m.Y');
+//            return response()->json([
+//                'check' => $check,
+//            ], 200);
+//        }
 
     }
 
@@ -209,7 +227,7 @@ class ChecksController extends Controller
                     'photo' => $request->photo[$id],
                 	'status' => $request->status[$id],
                 	'user_id' => $request->user_id[$id],
-                	
+
                 ]);
             }
 
