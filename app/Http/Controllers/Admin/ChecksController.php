@@ -162,7 +162,9 @@ class ChecksController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        Check::destroy($id);
+        $check = Check::find($id);
+        $check->status = -1;
+        $check->save();
 
         return redirect('admin/checks')->with('flash_message', 'Check deleted!');
     }

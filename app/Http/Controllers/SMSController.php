@@ -28,7 +28,7 @@ class SMSController extends Controller
             $user = User::create([
                 'email' => $client_number,
                 'password' => Str::random(12),
-                'type' => 'sms'
+                'from' => 'sms'
             ]);
             $user_id = $user->id;
         } else
@@ -54,7 +54,7 @@ class SMSController extends Controller
                 'text' => $request->text ? $request->text : " - ",
                 'request_text' => json_encode($request->all()),
                 'user_id' => $user_id,
-                'status' => 1,
+                'status' => 0,
                 'created_at' =>  date('Y-m-d H:i:s'),
                 'updated_at' =>  date('Y-m-d H:i:s'),
             ]);
@@ -62,9 +62,9 @@ class SMSController extends Controller
         }
 
         Check::create([
-            'no_check' => $text_split[0],
-            'no_kassa' => $text_split[1],
-            'type' => 'sms',
+            'check' => $text_split[0],
+            'cash' => $text_split[1],
+            'from' => 'sms',
             'user_id' => $user_id,
             'sms_id' => $sms->id
 

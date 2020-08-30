@@ -27,7 +27,6 @@
                                 <option value="Принят" {{(request()->has('status') && request()->input('status') == 'Принят' ? 'selected' : '')}}>Принят</option>
                                 <option value="Отклонен" {{(request()->has('status') && request()->input('status') == 'Отклонен' ? 'selected' : '')}}>Отклонен</option>
                             </select>
-s
                             <select name="from" class="form-control">
                                 <option value="" {{(request()->has('from') && request()->input('from') == '' ? 'selected' : '')}}>Выберите магазин</option>
                                 <option {{(request()->has('from') && request()->input('from') == 'web' ? 'selected' : '')}}>web</option>
@@ -86,7 +85,6 @@ s
                         <td>{{ $item->from }}</td>
                         <td>{{ $item->user->name }}</td>
                         <td>{{ $item->user->email }}</td>
-                        <td>{{ $item->user->status }}</td>
                         <td>
                             @switch($item->status)
                                 @case(0)
