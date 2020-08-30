@@ -37,8 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function checks(){
-        return $this->hasMany('App\Check');
+    public function sms() {
+        return $this->hasMany(Sms::Class);
+    }
+    public function checks() {
+        return $this->hasMany(Check::Class);
     }
 //    public function hasPermission($type){
 //        if($this->type == 'admin'){

@@ -14,11 +14,15 @@ class CreateChecksTable extends Migration
     {
         Schema::create('checks', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->string('photo')->nullable();
-            $table->string('status');
+            $table->string('check');
+            $table->string('cash');
+            $table->integer('status')->default(0);
+            $table->string('type')->default('web');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+//            $table->integer('sms_id')->unsigned()->nullable();
+//            $table->foreign('sms_id')->references('id')->on('sms')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 

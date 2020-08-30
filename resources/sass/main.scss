@@ -200,6 +200,9 @@ input, textarea{
     resize: none;
     transition: all 0.2s ease;
     position: relative;
+    &[name="phone"]{
+        letter-spacing: -2.4px;
+    }
     &:not(textarea){
         height: 1.917em;
     }
@@ -210,11 +213,70 @@ input, textarea{
         color: $brown;
         background: $yellow;
     }
+    &[type="checkbox"]{
+        display: none;
+        ~label{
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+            &:hover{
+                color: $yellow;
+            }
+        }
+        &~.checkbox{
+            font-size: 3.2rem;
+            width: 1em;
+            height: 1em;
+            min-height: 1em;
+            min-width: 1em;
+            background: white;
+            border-radius: 0.25em;
+            margin-right: 1.4rem;
+            position: relative;
+            cursor: pointer;
+            top: -0.1em;
+            &:after{
+                content: '';
+                display: block;
+                width: 0.8em;
+                height: 0.8em;
+                position: absolute;
+                top: calc(50% - 0.4em);
+                left: calc(50% - 0.4em);
+                background: $brown;
+                mask: url(/images/icons/checkmark.png) center / contain no-repeat;
+                opacity: 0;
+                transform: scale(0) translateY(-2em);
+                transition: transform 0.2s cubic-bezier(.8,-.5,.2,1.4), opacity 0.2s ease;
+            }
+        }
+        &.error{
+            &~.checkbox{
+                background: $pink;
+            }
+            &~label{
+                color: $pink;
+            }
+        }
+        &:checked, &.error:checked{
+            &~.checkbox{
+                background: $yellow;
+                &:after{
+                    transform: none;
+                    opacity: 1;
+                }
+            }
+            &~label{
+                color: white;
+            }
+        }
 
+    }
 }
 .input{
     width: 100%;
     position: relative;
+
     &.error{
         input, textarea{
             background: $pink!important;
@@ -1029,9 +1091,7 @@ header{
                 width: 27.2rem;
             }
         }
-        input[name="phone"]{
-            letter-spacing: -2.5px;
-        }
+
         .button{
             padding: 0 1em;
             margin-top: 2rem;
@@ -1243,18 +1303,30 @@ footer{
                 margin-bottom: 2.5rem;
             }
             .column{
-                margin-bottom: 1.7rem;
+                margin-bottom: 1.6rem;
                 .text{
                     text-align: left;
                     align-self: flex-start;
                 }
+                .input.row{
+                    align-items: center;
+                    label.text{
+                        font-size: 1.6rem;
+                        line-height: 1.8rem;
+                    }
+                }
             }
             .button{
-                margin: 0.3rem 0 3rem;
+                width: min-content;
+                margin: 0.3rem auto 3rem;
             }
         }
         p{
             margin-bottom: 4rem;
+        }
+        .reg-text{
+            font-size: 1.8rem;
+            line-height: 2.1rem;
         }
         .bottom{
             padding: 3.6rem 0 4rem;
@@ -1263,7 +1335,7 @@ footer{
             background: $yellow;
             color: $brown;
             h2{
-                margin-bottom: 1.8rem;
+                margin-bottom: 1.2rem;
             }
             .button{
                 padding: 0 2.4em;

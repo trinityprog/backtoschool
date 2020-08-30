@@ -84,14 +84,13 @@ class RegisterController extends Controller
     }
 
     public function registration(Request $request){
-        $data = $request->only(['name', 'phone', 'type']);
-        $data['phone'] = trim($data['phone'], '_');
+        $data = $request->only(['name', 'phone', 'rules']);
 
 
         $validator = Validator::make($data , [
             'name' => 'required|min:2|max:20|alpha',
             'phone' => 'required|size:16|unique:users,email',
-//            'type' => 'required'
+            'rules' => 'required',
         ]);
 
         if($validator->fails()){

@@ -20,9 +20,16 @@
                     @error('phone') {{ $message }} @enderror
                 </span>
             </div>
+            <div class="column">
+                <div class="input row">
+                    <input type="checkbox" name="rules" id="rules" class="@error('rules') error @enderror">
+                    <label for="rules" class="checkbox"></label>
+                    <label for="rules" class="text tiny din">@lang('index.modals.reg.checkbox')</label>
+                </div>
+            </div>
             <button class="button text">@lang('index.modals.reg.action')</button>
         </form>
-        <p class="text tiny">
+        <p class="text tiny reg-text">
             @lang('index.modals.reg.text')
         </p>
         <div class="bottom column text medium header">

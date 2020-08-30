@@ -1,7 +1,7 @@
 @component('mail::message')
 # Ответ на вапрос
 
-{{ $question->question }}
+{!!  $question->question !!}
 
 <br>
 <hr>

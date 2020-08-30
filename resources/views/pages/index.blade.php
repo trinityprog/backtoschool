@@ -215,7 +215,7 @@
             @foreach(\App\Faq::orderBy('order', 'asc')->get() as $faq)
                 <div class="faq column">
                     <div class="title text header medium">{{ $faq->question }}</div>
-                    <div class="body text">{!! $faq->answer !!} </div>
+                    <div class="body text tiny">{!! $faq->answer !!} </div>
                 </div>
             @endforeach
 

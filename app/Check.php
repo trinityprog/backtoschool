@@ -25,11 +25,13 @@ class Check extends Model
      *
      * @var array
      */
-    protected $fillable = ['photo', 'status', 'user_id', 'type', 'code', 'cash'];
+    protected $fillable = ['user_id', 'sms_id', 'status', 'user_id', 'type', 'code', 'cash'];
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
+    public function user() {
+        return $this->belongsTo(User::Class);
     }
-    
+    public function sms() {
+        return $this->belongsTo(Sms::Class);
+    }
+
 }

@@ -14,6 +14,7 @@
 
 
 Route::get('/', 'HomeController@index');
+Route::get('sms', 'SMSController@index');
 
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

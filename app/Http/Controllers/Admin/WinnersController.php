@@ -54,12 +54,12 @@ class WinnersController extends Controller
     {
         $this->validate($request, [
 			'name' => 'required|min:2|max:20|alpha',
-			'phone' => 'required|size:14',
+			'phone' => 'required|size:16',
 			'city' => 'required|min:2|max:20|alpha',
 			'prize' => 'required|min:2|max:20'
 		]);
         $requestData = $request->all();
-        
+
         Winner::create($requestData);
 
         return redirect('admin/winners')->with('flash_message', 'Winner added!');
@@ -86,12 +86,12 @@ class WinnersController extends Controller
     {
         $this->validate($request, [
 			'name' => 'required|min:2|max:20|alpha',
-			'phone' => 'required|size:14',
+			'phone' => 'required|size:16',
 			'city' => 'required|min:2|max:20|alpha',
 			'prize' => 'required|min:2|max:20'
 		]);
         $requestData = $request->all();
-        
+
         $winner = Winner::findOrFail($id);
         $winner->update($requestData);
 

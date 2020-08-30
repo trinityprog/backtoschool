@@ -31751,7 +31751,7 @@ var winnersInit = function winnersInit() {
       callback: function callback(data, pagination) {
         var html = '';
         data.forEach(function (el) {
-          html += "\n                    <div class=\"row\">\n                        <div class=\"column\">".concat(el.phone.substring(0, 6), " XXXXX").concat(el.phone.substring(12), "</div>\n                        <div class=\"column\">").concat(el.city, "</div>\n                        <div class=\"column\">").concat(el.prize, "</div>\n                    </div>");
+          html += "\n                    <div class=\"row\">\n                        <div class=\"column\">".concat(el.phone.substring(0, 4), " XX XX XX ").concat(el.phone.substring(14), "</div>\n                        <div class=\"column\">").concat(el.city, "</div>\n                        <div class=\"column\">").concat(el.prize, "</div>\n                    </div>");
         });
 
         if (data.length < 8) {

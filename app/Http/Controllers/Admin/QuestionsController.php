@@ -62,7 +62,7 @@ class QuestionsController extends Controller
         $this->validate($request, [
 			'name' => 'required|min:2|max:20|alpha',
 			'email' => 'required|email:rfc',
-			'phone' => 'required|size:14',
+			'phone' => 'required|size:16',
 			'question' => 'required|min:10|max:150'
 		]);
         $requestData = $request->all();
@@ -94,7 +94,7 @@ class QuestionsController extends Controller
         $this->validate($request, [
 			'name' => 'required|min:2|max:20|alpha',
 			'email' => 'required|email:rfc',
-			'phone' => 'required|size:14',
+			'phone' => 'required|size:16',
 			'question' => 'required|min:10|max:150'
 		]);
         $requestData = $request->all();
@@ -144,7 +144,7 @@ class QuestionsController extends Controller
                 	'question' => $request->question[$id],
                 	'answer' => $request->answer[$id],
                 	'answered' => $request->answered[$id],
-                	
+
                 ]);
             }
 

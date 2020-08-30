@@ -2163,6 +2163,9 @@ input, textarea {
   transition: all 0.2s ease;
   position: relative;
 }
+input[name=phone], textarea[name=phone] {
+  letter-spacing: -2.4px;
+}
 input:not(textarea), textarea:not(textarea) {
   height: 1.917em;
 }
@@ -2181,6 +2184,64 @@ input::placeholder, textarea::placeholder {
 input:focus, textarea:focus {
   color: #3c1400;
   background: #fbaf1a;
+}
+input[type=checkbox], textarea[type=checkbox] {
+  display: none;
+}
+input[type=checkbox] ~ label, textarea[type=checkbox] ~ label {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: all 0.2s ease;
+}
+input[type=checkbox] ~ label:hover, textarea[type=checkbox] ~ label:hover {
+  color: #fbaf1a;
+}
+input[type=checkbox] ~ .checkbox, textarea[type=checkbox] ~ .checkbox {
+  font-size: 3.2rem;
+  width: 1em;
+  height: 1em;
+  min-height: 1em;
+  min-width: 1em;
+  background: white;
+  border-radius: 0.25em;
+  margin-right: 1.4rem;
+  position: relative;
+  cursor: pointer;
+  top: -0.1em;
+}
+input[type=checkbox] ~ .checkbox:after, textarea[type=checkbox] ~ .checkbox:after {
+  content: "";
+  display: block;
+  width: 0.8em;
+  height: 0.8em;
+  position: absolute;
+  top: calc(50% - 0.4em);
+  left: calc(50% - 0.4em);
+  background: #3c1400;
+  -webkit-mask: url(/images/icons/checkmark.png) center/contain no-repeat;
+          mask: url(/images/icons/checkmark.png) center/contain no-repeat;
+  opacity: 0;
+  transform: scale(0) translateY(-2em);
+  transition: transform 0.2s cubic-bezier(0.8, -0.5, 0.2, 1.4), opacity 0.2s ease;
+}
+input[type=checkbox].error ~ .checkbox, textarea[type=checkbox].error ~ .checkbox {
+  background: #fdc7c7;
+}
+input[type=checkbox].error ~ label, textarea[type=checkbox].error ~ label {
+  color: #fdc7c7;
+}
+input[type=checkbox]:checked ~ .checkbox, input[type=checkbox].error:checked ~ .checkbox, textarea[type=checkbox]:checked ~ .checkbox, textarea[type=checkbox].error:checked ~ .checkbox {
+  background: #fbaf1a;
+}
+input[type=checkbox]:checked ~ .checkbox:after, input[type=checkbox].error:checked ~ .checkbox:after, textarea[type=checkbox]:checked ~ .checkbox:after, textarea[type=checkbox].error:checked ~ .checkbox:after {
+  transform: none;
+  opacity: 1;
+}
+input[type=checkbox]:checked ~ label, input[type=checkbox].error:checked ~ label, textarea[type=checkbox]:checked ~ label, textarea[type=checkbox].error:checked ~ label {
+  color: white;
 }
 
 .input {
@@ -2954,9 +3015,6 @@ header .mobile {
 #faq .form .row .column {
   width: 27.2rem;
 }
-#faq .form input[name=phone] {
-  letter-spacing: -2.5px;
-}
 #faq .form .button {
   padding: 0 1em;
   margin-top: 2rem;
@@ -3165,17 +3223,31 @@ footer a:hover .icon {
   margin-bottom: 2.5rem;
 }
 .remodal[data-remodal-id=registration] .form .column {
-  margin-bottom: 1.7rem;
+  margin-bottom: 1.6rem;
 }
 .remodal[data-remodal-id=registration] .form .column .text {
   text-align: left;
   align-self: flex-start;
 }
+.remodal[data-remodal-id=registration] .form .column .input.row {
+  align-items: center;
+}
+.remodal[data-remodal-id=registration] .form .column .input.row label.text {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+}
 .remodal[data-remodal-id=registration] .form .button {
-  margin: 0.3rem 0 3rem;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  margin: 0.3rem auto 3rem;
 }
 .remodal[data-remodal-id=registration] p {
   margin-bottom: 4rem;
+}
+.remodal[data-remodal-id=registration] .reg-text {
+  font-size: 1.8rem;
+  line-height: 2.1rem;
 }
 .remodal[data-remodal-id=registration] .bottom {
   padding: 3.6rem 0 4rem;
@@ -3185,7 +3257,7 @@ footer a:hover .icon {
   color: #3c1400;
 }
 .remodal[data-remodal-id=registration] .bottom h2 {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem;
 }
 .remodal[data-remodal-id=registration] .bottom .button {
   padding: 0 2.4em;

@@ -48,7 +48,7 @@ class HomeController extends Controller
         ]);
 
         if($validator->fails())
-            return back()->withInput($data)->withErrors($validator);
+            return redirect('/#faq')->withInput($data)->withErrors($validator);
 
         $question = Question::create([
             'name' => $data['name'],

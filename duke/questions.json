@@ -37,7 +37,7 @@
         },
         {
             "field": "phone",
-            "rules": "required|size:14"
+            "rules": "required|size:16"
         },
         {
             "field": "question",

@@ -462,7 +462,7 @@ let winnersInit = () => {
                 data.forEach(el => {
                     html += `
                     <div class="row">
-                        <div class="column">${ el.phone.substring(0, 6) } XXXXX${ el.phone.substring(12) }</div>
+                        <div class="column">${ el.phone.substring(0, 4) } XX XX XX ${ el.phone.substring(14) }</div>
                         <div class="column">${ el.city }</div>
                         <div class="column">${ el.prize }</div>
                     </div>`;
