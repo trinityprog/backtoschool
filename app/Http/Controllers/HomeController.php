@@ -30,9 +30,9 @@ class HomeController extends Controller
 
 
 
-    public function profile(){
-        return view('pages.profile');
-    }
+//    public function profile(){
+//        return view('pages.profile');
+//    }
 
 
 
@@ -48,7 +48,8 @@ class HomeController extends Controller
         ]);
 
         if($validator->fails())
-            return redirect('/#faq')->withInput($data)->withErrors($validator);
+//            return redirect('/#faq')->withInput($data)->withErrors($validator);
+            return redirect('/#faq')->withInput($data);
 
         $question = Question::create([
             'name' => $data['name'],

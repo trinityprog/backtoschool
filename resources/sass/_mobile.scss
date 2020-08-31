@@ -22,14 +22,16 @@
       line-height: 4.8rem;
     }
     &.big{
+        font-size: 5.45rem;
+        line-height: 5.45rem;
     }
     &.large{
       font-size: 7.2rem;
       line-height: 7.8rem;
     }
-    &.huge{
-      font-size: 10rem;
-      line-height: 10rem;
+    &.huge {
+      font-size: 8rem;
+      line-height: 8rem;
     }
   }
   .icon{
@@ -95,14 +97,14 @@
     }
   }
   header{
-    background: $yellow;
-    border-radius: 0px 0px 3.2vmin 3.2vmin;
+    background: #fbaf1a;
+    border-radius: 0 0 3.2vmin 3.2vmin;
     width: 20vmin;
     height: 13.5vmin;
     left: unset;
     right: 5vw;
     overflow: hidden;
-    transition: width 0.2s ease, height 0.2s ease, right 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+    transition: width .2s ease,height .2s ease,right .2s ease,opacity .2s ease,transform .2s ease;
     &.active{
       width: 100vw;
       height: 94rem;
@@ -125,10 +127,15 @@
       .container{
         padding-bottom: 6rem;
         .slide{
-          opacity: 1;
+            opacity: 1;
         }
-        a{
-          opacity: 1;
+        a:not(.button){
+            opacity: 1;
+            pointer-events: all;
+        }
+        .button{
+            opacity: 1;
+            pointer-events: all;
         }
       }
     }
@@ -152,7 +159,6 @@
       right: 0;
       justify-content: space-evenly;
       padding: 0;
-
       .slide{
         left: 0;
         opacity: 0;
@@ -163,11 +169,15 @@
         padding: 0 5.6vmin;
         font-size: 3.6rem;
         line-height: 3.6rem;
+        opacity: 0;
+        pointer-events: none;
       }
       .button{
         font-size: 4rem;
         position: relative;
         z-index: 5;
+        opacity: 0;
+        pointer-events: none;
       }
       .lang{
         font-size: 3.6rem;
@@ -236,29 +246,42 @@
       }
 
     }
-    .laptop{
-      width: 100vmin;
-      height: 62.5vmin;
-      top: 125vmin;
-      right: 3vw;
-      filter: drop-shadow(-3rem 3rem 0.2rem rgba(0, 0, 0, 0.4));
-      transform: translateX(-100vw);
-      background-image: url(/images/hero/magnum/laptop_mobile.png);
+    .tablet {
+      top: 100vmin;
+      left: -6vmin;
+      right: auto;
+      width: 57rem;
+      height: 68rem;
+      background-image: url(/images/hero/tablet-mobile.png);
     }
-    .backpack{
-      top: 102vmin;
-      right: 2vw;
-      background-image: url(/images/hero/magnum/backpack_mobile.png);
+    .bag{
+        top: 94vmin;
+        left: 0vmin;
+        right: auto;
+        width: 61.5rem;
+        height: 58.2rem;
     }
     >.top{
-      padding-top: 7.5vmin;
-      .languages{
-        font-size: 3.2rem;
+      padding-top: 3.05rem;
+      .container{
+          .column{
+              flex-direction: row;
+              align-items: center;
+              .logo{
+                  margin: 0;
+              }
+              .text.small{
+                  margin-left: 2.75rem;
+              }
+          }
       }
     }
     >.container{
       justify-content: flex-start;
-      padding-top: 48vmin;
+      padding-top: 20.5rem;
+      .text{
+          top: 0;
+      }
       &:before{
         width: 174vmin;
         height: 96vmin;
@@ -268,19 +291,29 @@
         left: unset;
       }
     }
+    >.middle{
+        z-index: auto;
+        bottom: auto;
+        padding-top: 38.5rem;
+    }
     >.bottom{
       bottom: unset;
       top: 48.3rem;
+      margin-bottom: 0;
     }
   }
 
   #mechanics{
     .container{
+      padding-bottom: 5rem;
       >.link{
-        position: relative;
-        font-size: 4.2rem;
-        line-height: 4.2rem;
-        bottom: -6.5rem;
+          position: relative;
+          font-size: 3.8rem;
+          line-height: 3.8rem;
+          bottom: -7rem;
+      }
+      >:not(.steps).rules-sms{
+          display: none;
       }
     }
     .text{
@@ -294,9 +327,17 @@
       padding: 0;
     }
     .step{
-      width: 100%!important;
-      padding-top: 10vmin;
-      .image{
+        width: 100%!important;
+        padding: 0;
+        padding-top: 10vmin;
+        &:nth-child(2) .text.medium{
+            font-size: 3.9rem;
+            &.rules-sms{
+                font-size: 2.85rem;
+                line-height: 3.25rem;
+            }
+        }
+        .image{
         width: 55vmin;
         height: 45vmin;
         background-size: contain;
@@ -307,17 +348,22 @@
           left: -2vmin;
           bottom: 0;
         }
-      }
-      .text{
+        }
+        .text{
         &.title{
           font-size: 6.4rem;
           line-height: 6.4rem;
+        }
+        &.save-check {
+            font-size: 4.1rem;
+            line-height: 4.7rem;
+            margin: 3.5rem 0;
         }
         &.body{
           font-size: 4.2rem;
           line-height: 4.8rem;
         }
-      }
+        }
 
     }
     .button{
@@ -327,8 +373,13 @@
 
   #prizes{
     overflow: hidden;
+    padding: 0;
+    .bg{
+       display: none;
+    }
     .text{
       text-align: center;
+      margin: 1rem 0 5rem;
     }
     >.main{
       .prizes{
@@ -337,12 +388,13 @@
       }
       .prize{
         .image{
-          width: 90vmin;
-          height: 47.8rem;
+          width: 45.7rem;
+          height: 54.5rem;
           .number{
             width: 19.5vmin;
             height: 19.5vmin;
-            right: 4.6rem;
+            ight: unset;
+            left: 12.5vmin;
             span{
               &:first-child{
                 font-size: 8.6vmin;
@@ -357,13 +409,6 @@
           width: 30vmin;
           height: 30vmin;
           box-shadow: 0px 0px 15vmin 15vmin $darkBrown;
-        }
-        &:first-child{
-          margin-bottom: 20vmin;
-          .number{
-            right: unset;
-            left: 12.5vmin;
-          }
         }
       }
     }
@@ -434,6 +479,10 @@
       width: 90vw;
       margin: 3.5rem 0 4.5rem;
       font-size: 4.2rem;
+      input{
+          font-size: 2.95rem;
+          padding: 2.3rem 0 2rem 2.5rem;
+      }
       .button{
         font-size: 4.56rem;
       }
@@ -468,6 +517,13 @@
 
   #faq{
     padding-bottom: 5vmin;
+    .faq-text{
+        font-size: 3.2rem;
+        line-height: 3.6rem;
+        br{
+            display: none;
+        }
+    }
     .container{
       >.text.medium{
         margin-top: 4rem;
@@ -527,11 +583,12 @@
 
 
   #up{
-    padding-left: 6.25vmin;
-    width: 51vmin;
+    font-size: 3rem;
+    line-height: 3.4rem;
+    padding-left: 2rem;
+    width: 40rem;
     height: 9.375vmin;
     right: -3.75vmin;
-    font-size: 4.6vmin;
     border-radius: 1.5vmin 1.5vmin 0px 0px;
     &:before, &:after{
       right: 8.2vmin;
@@ -691,6 +748,12 @@
             align-items: center;
             :first-child{
               margin: 0 0 2rem 0;
+              width: 14.3rem;
+              height: 12.3rem;
+            }
+            :last-child{
+                font-size: 3.2rem;
+                line-height: 3.6rem;
             }
           }
         }
@@ -698,7 +761,10 @@
       }
       >:last-child{
         font-size: 2.4rem;
-        line-height: 2.8rem;
+        line-height: 3.2rem;
+        .right{
+            font-size: inherit;
+        }
         .row{
           margin-top: 1em;
           display: block;
@@ -709,16 +775,16 @@
       }
     }
   }
-  .remodal-close{
-    width: 8rem;
-    height: 8rem;
-    &:before{
-      font-size: 8rem;
-      line-height: 8rem;
-      width: 8rem;
-    }
-  }
   .remodal{
+      .remodal-close{
+          width: 8rem;
+          height: 8rem;
+          &:before{
+              font-size: 8rem;
+              line-height: 8rem;
+              width: 8rem;
+          }
+      }
     &[data-remodal-id="ageFilter"]{
       width: 58rem;
       font-size: 4.2rem;
@@ -741,18 +807,19 @@
       }
     }
     &[data-remodal-id="faq-success"]{
-      width: 48.6rem;
-      padding: 7.3rem 0 5.7rem;
+      width: 90vw;
+      padding: 7rem 0 3.6rem;
       h1{
         font-size: 4.2rem;
-        line-height: 4.2rem;
+        line-height: 4.8rem;
       }
       .text.medium{
-        font-size: 3.6rem;
-        line-height: 4.2rem;
+        font-size: 3.2rem;
+        line-height: 3.6rem;
       }
       .button{
         font-size: 3.6rem;
+        line-height: 3.2rem;
       }
 
     }
@@ -793,6 +860,10 @@
         .button{
           font-size: 3.6rem;
         }
+        .column .input.row label.text{
+            font-size: 2.2rem;
+            line-height: 2.4rem;
+        }
       }
       .text.tiny{
         font-size: 2.4rem;
@@ -802,29 +873,35 @@
         margin-bottom: 5rem;
       }
       .bottom{
-        font-size: 3.6rem;
-        line-height: 3.6rem;
         h2{
-
+            font-size: 4.2rem;
+            margin-bottom: 2rem;
+        }
+        .button{
+              font-size: 4.2rem;
+              padding: 1.5rem 3.6rem;
+              width: 38.5rem;
         }
       }
 
     }
     &[data-remodal-id="check-success"]{
       width: 58rem;
-      padding: 7.5rem 0 5.6rem;
+      padding: 6rem 0 5.6rem;
       h1{
         font-size: 4.2rem;
         line-height: 4.2rem;
+        width: 36rem;
+        margin: 0 auto;
       }
       .text.medium{
-        font-size: 3.6rem;
-        line-height: 4.2rem;
-      }
-      .alert{
         font-size: 3.2rem;
         line-height: 3.6rem;
-        padding: 1rem 2rem;
+      }
+      .alert{
+          font-size: 2.7rem;
+          line-height: 3.1rem;
+          padding: 1rem 2rem;
       }
       p{
         padding: 0 2rem;
@@ -838,45 +915,66 @@
     &[data-remodal-id="check"]{
       overflow: visible;
       width: 58rem;
-      padding: 15.8rem 0 22rem;
-
+      padding: 6rem 0 0;
       h1{
-          width: 100%;
-          position: absolute;
-          top: 5.5rem;
-          left: 0;
           font-size: 5.2rem;
-          line-height: 5.2rem;
+          line-height: 5rem;
+          margin-bottom: 1.5rem;
       }
       h2{
-          text-align: left;
           font-size: 2.8rem;
           line-height: 3.2rem;
+          text-align: center;
       }
-      .form-wrapper{
-          width: 38.5rem;
-          &:before{
-              width: 21.4rem;
-              height: 50.3rem;
-              top: 13rem;
-              left: -1.9rem;
-          }
-          .form{
-              font-size: 4.2rem;
-              padding: 0 3rem 0 3.2rem;
-          }
-      }
-      .alert{
-          font-size: 3.2rem;
-          line-height: 3.2rem;
-          padding: 1rem 2rem;
-      }
-      .button{
-          width: 43rem;
-          position: absolute;
-          font-size: 3.6rem;
-          bottom: 7.5rem;
-          left: calc(50% - 21.5rem);
+      .form {
+        .form-wrap {
+            margin: 0;
+            margin-top: 40rem;
+
+            &:before {
+                width: 25.6rem;
+                height: 48rem;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: calc(100% - 9.7rem);
+                top: auto;
+                right: auto;
+                z-index: -1;
+            }
+            &:after {
+                content: '';
+                background: url(/images/icons/shadow.png) center / contain no-repeat;
+                height: 3rem;
+                left: 0;
+                right: 0;
+                top: -5.9rem;
+                position: absolute;
+                z-index: -1;
+            }
+            .form-items{
+                padding: 0 6.4rem;
+                &:before{
+                    content: '';
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    top: -3rem;
+                    position: absolute;
+                    background-color: $brown;
+                    z-index: -1;
+                }
+            }
+            .alert{
+                width: max-content;
+                margin: 5rem auto 0;
+                font-size: 2.8rem;
+                line-height: 3.2rem;
+                padding: 1.4rem 3.5rem;
+            }
+            .button{
+                margin: 0 auto;
+            }
+        }
       }
     }
     &[data-remodal-id="profile"]{
@@ -889,13 +987,13 @@
       h2{
           font-size: 4.2rem;
           line-height: 5.2rem;
-          margin-bottom: 3rem;
+          margin: 2rem 0;
       }
       .alert{
           align-self: center;
           width: 58rem;
-          font-size: 3.2rem;
-          line-height: 3.6rem;
+          font-size: 2.6rem;
+          line-height: 3.2rem;
       }
       .table{
           margin-top: 2.5rem;

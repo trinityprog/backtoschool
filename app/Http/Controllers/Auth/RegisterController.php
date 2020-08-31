@@ -95,7 +95,9 @@ class RegisterController extends Controller
 
         if($validator->fails()){
             return redirect('/#registration')
-                ->withErrors($validator)->withInput();
+                ->withInput();
+//            return redirect('/#registration')
+//                ->withErrors($validator)->withInput();
         }
         $data = $validator->validated();
 

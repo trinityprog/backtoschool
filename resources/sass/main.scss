@@ -933,18 +933,25 @@ header{
             overflow: visible;
         }
     }
-    .bg{
+    >.container{
         position: absolute;
-        height: auto;
-        &.bg-1{
-            width: 63.6rem;
-            top: 0;
-            left: 0;
-        }
-        &.bg-2{
-            width: 57.5rem;
-            top: 10rem;
-            right: 3.3rem;
+        top: 0;
+        left: 0;
+        right: 0;
+        border: 0;
+        .bg{
+            position: absolute;
+            height: auto;
+            &.bg-1{
+                width: 63.6rem;
+                top: 0;
+                left: -31rem;
+            }
+            &.bg-2{
+                width: 57.5rem;
+                top: 10rem;
+                right: -27rem;
+            }
         }
     }
 }
@@ -1575,6 +1582,12 @@ footer{
                 align-items: center;
                 width: 15rem;
                 font-size: 1.8rem;
+                &:first-of-type{
+                    width: 19rem;
+                }
+                &:last-of-type{
+                    width: 17.5rem;
+                }
             }
             .row{
                 align-items: center;

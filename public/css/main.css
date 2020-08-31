@@ -2863,19 +2863,26 @@ header .mobile {
 #prizes > .weekly .container {
   overflow: visible;
 }
-#prizes .bg {
+#prizes > .container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border: 0;
+}
+#prizes > .container .bg {
   position: absolute;
   height: auto;
 }
-#prizes .bg.bg-1 {
+#prizes > .container .bg.bg-1 {
   width: 63.6rem;
   top: 0;
-  left: 0;
+  left: -31rem;
 }
-#prizes .bg.bg-2 {
+#prizes > .container .bg.bg-2 {
   width: 57.5rem;
   top: 10rem;
-  right: 3.3rem;
+  right: -27rem;
 }
 
 #winners {
@@ -3496,6 +3503,12 @@ footer a:hover .icon {
   width: 15rem;
   font-size: 1.8rem;
 }
+.remodal[data-remodal-id=profile] .table .column:first-of-type {
+  width: 19rem;
+}
+.remodal[data-remodal-id=profile] .table .column:last-of-type {
+  width: 17.5rem;
+}
 .remodal[data-remodal-id=profile] .table .row {
   align-items: center;
   justify-content: space-evenly;
@@ -3547,13 +3560,17 @@ footer a:hover .icon {
     font-size: 4.2rem;
     line-height: 4.8rem;
   }
+  .text.big {
+    font-size: 5.45rem;
+    line-height: 5.45rem;
+  }
   .text.large {
     font-size: 7.2rem;
     line-height: 7.8rem;
   }
   .text.huge {
-    font-size: 10rem;
-    line-height: 10rem;
+    font-size: 8rem;
+    line-height: 8rem;
   }
 
   .icon.camera {
@@ -3616,7 +3633,7 @@ footer a:hover .icon {
 
   header {
     background: #fbaf1a;
-    border-radius: 0px 0px 3.2vmin 3.2vmin;
+    border-radius: 0 0 3.2vmin 3.2vmin;
     width: 20vmin;
     height: 13.5vmin;
     left: unset;
@@ -3648,8 +3665,13 @@ footer a:hover .icon {
   header.active .container .slide {
     opacity: 1;
   }
-  header.active .container a {
+  header.active .container a:not(.button) {
     opacity: 1;
+    pointer-events: all;
+  }
+  header.active .container .button {
+    opacity: 1;
+    pointer-events: all;
   }
   header .burger {
     transition: all 0.2s ease;
@@ -3682,11 +3704,15 @@ footer a:hover .icon {
     padding: 0 5.6vmin;
     font-size: 3.6rem;
     line-height: 3.6rem;
+    opacity: 0;
+    pointer-events: none;
   }
   header .container .button {
     font-size: 4rem;
     position: relative;
     z-index: 5;
+    opacity: 0;
+    pointer-events: none;
   }
   header .container .lang {
     font-size: 3.6rem;
@@ -3749,30 +3775,40 @@ footer a:hover .icon {
     right: 5vw;
     width: 56.8rem;
   }
-  #hero .laptop {
-    width: 100vmin;
-    height: 62.5vmin;
-    top: 125vmin;
-    right: 3vw;
-    -webkit-filter: drop-shadow(-3rem 3rem 0.2rem rgba(0, 0, 0, 0.4));
-            filter: drop-shadow(-3rem 3rem 0.2rem rgba(0, 0, 0, 0.4));
-    transform: translateX(-100vw);
-    background-image: url(/images/hero/magnum/laptop_mobile.png);
+  #hero .tablet {
+    top: 100vmin;
+    left: -6vmin;
+    right: auto;
+    width: 57rem;
+    height: 68rem;
+    background-image: url(/images/hero/tablet-mobile.png);
   }
-  #hero .backpack {
-    top: 102vmin;
-    right: 2vw;
-    background-image: url(/images/hero/magnum/backpack_mobile.png);
+  #hero .bag {
+    top: 94vmin;
+    left: 0vmin;
+    right: auto;
+    width: 61.5rem;
+    height: 58.2rem;
   }
   #hero > .top {
-    padding-top: 7.5vmin;
+    padding-top: 3.05rem;
   }
-  #hero > .top .languages {
-    font-size: 3.2rem;
+  #hero > .top .container .column {
+    flex-direction: row;
+    align-items: center;
+  }
+  #hero > .top .container .column .logo {
+    margin: 0;
+  }
+  #hero > .top .container .column .text.small {
+    margin-left: 2.75rem;
   }
   #hero > .container {
     justify-content: flex-start;
-    padding-top: 48vmin;
+    padding-top: 20.5rem;
+  }
+  #hero > .container .text {
+    top: 0;
   }
   #hero > .container:before {
     width: 174vmin;
@@ -3782,16 +3818,28 @@ footer a:hover .icon {
     background: url(/images/choice-bg.png) center/contain no-repeat;
     left: unset;
   }
+  #hero > .middle {
+    z-index: auto;
+    bottom: auto;
+    padding-top: 38.5rem;
+  }
   #hero > .bottom {
     bottom: unset;
     top: 48.3rem;
+    margin-bottom: 0;
   }
 
+  #mechanics .container {
+    padding-bottom: 5rem;
+  }
   #mechanics .container > .link {
     position: relative;
-    font-size: 4.2rem;
-    line-height: 4.2rem;
-    bottom: -6.5rem;
+    font-size: 3.8rem;
+    line-height: 3.8rem;
+    bottom: -7rem;
+  }
+  #mechanics .container > :not(.steps).rules-sms {
+    display: none;
   }
   #mechanics .text {
     text-align: center;
@@ -3805,7 +3853,15 @@ footer a:hover .icon {
   }
   #mechanics .step {
     width: 100% !important;
+    padding: 0;
     padding-top: 10vmin;
+  }
+  #mechanics .step:nth-child(2) .text.medium {
+    font-size: 3.9rem;
+  }
+  #mechanics .step:nth-child(2) .text.medium.rules-sms {
+    font-size: 2.85rem;
+    line-height: 3.25rem;
   }
   #mechanics .step .image {
     width: 55vmin;
@@ -3823,6 +3879,11 @@ footer a:hover .icon {
     font-size: 6.4rem;
     line-height: 6.4rem;
   }
+  #mechanics .step .text.save-check {
+    font-size: 4.1rem;
+    line-height: 4.7rem;
+    margin: 3.5rem 0;
+  }
   #mechanics .step .text.body {
     font-size: 4.2rem;
     line-height: 4.8rem;
@@ -3833,22 +3894,28 @@ footer a:hover .icon {
 
   #prizes {
     overflow: hidden;
+    padding: 0;
+  }
+  #prizes .bg {
+    display: none;
   }
   #prizes .text {
     text-align: center;
+    margin: 1rem 0 5rem;
   }
   #prizes > .main .prizes {
     padding: 0 0 11rem;
     flex-direction: column;
   }
   #prizes > .main .prize .image {
-    width: 90vmin;
-    height: 47.8rem;
+    width: 45.7rem;
+    height: 54.5rem;
   }
   #prizes > .main .prize .image .number {
     width: 19.5vmin;
     height: 19.5vmin;
-    right: 4.6rem;
+    ight: unset;
+    left: 12.5vmin;
   }
   #prizes > .main .prize .image .number span:first-child {
     font-size: 8.6vmin;
@@ -3860,13 +3927,6 @@ footer a:hover .icon {
     width: 30vmin;
     height: 30vmin;
     box-shadow: 0px 0px 15vmin 15vmin #2d0f00;
-  }
-  #prizes > .main .prize:first-child {
-    margin-bottom: 20vmin;
-  }
-  #prizes > .main .prize:first-child .number {
-    right: unset;
-    left: 12.5vmin;
   }
   #prizes > .weekly .prizes {
     padding: 6.25vmin 0 15rem;
@@ -3929,6 +3989,10 @@ footer a:hover .icon {
     margin: 3.5rem 0 4.5rem;
     font-size: 4.2rem;
   }
+  #winners .form input {
+    font-size: 2.95rem;
+    padding: 2.3rem 0 2rem 2.5rem;
+  }
   #winners .form .button {
     font-size: 4.56rem;
   }
@@ -3957,6 +4021,13 @@ footer a:hover .icon {
 
   #faq {
     padding-bottom: 5vmin;
+  }
+  #faq .faq-text {
+    font-size: 3.2rem;
+    line-height: 3.6rem;
+  }
+  #faq .faq-text br {
+    display: none;
   }
   #faq .container > .text.medium {
     margin-top: 4rem;
@@ -4009,11 +4080,12 @@ footer a:hover .icon {
   }
 
   #up {
-    padding-left: 6.25vmin;
-    width: 51vmin;
+    font-size: 3rem;
+    line-height: 3.4rem;
+    padding-left: 2rem;
+    width: 40rem;
     height: 9.375vmin;
     right: -3.75vmin;
-    font-size: 4.6vmin;
     border-radius: 1.5vmin 1.5vmin 0px 0px;
   }
   #up:before, #up:after {
@@ -4168,10 +4240,19 @@ footer a:hover .icon {
   }
   footer .container > .row > :first-child .row :first-child {
     margin: 0 0 2rem 0;
+    width: 14.3rem;
+    height: 12.3rem;
+  }
+  footer .container > .row > :first-child .row :last-child {
+    font-size: 3.2rem;
+    line-height: 3.6rem;
   }
   footer .container > :last-child {
     font-size: 2.4rem;
-    line-height: 2.8rem;
+    line-height: 3.2rem;
+  }
+  footer .container > :last-child .right {
+    font-size: inherit;
   }
   footer .container > :last-child .row {
     margin-top: 1em;
@@ -4181,16 +4262,15 @@ footer a:hover .icon {
     display: inline-block;
   }
 
-  .remodal-close {
+  .remodal .remodal-close {
     width: 8rem;
     height: 8rem;
   }
-  .remodal-close:before {
+  .remodal .remodal-close:before {
     font-size: 8rem;
     line-height: 8rem;
     width: 8rem;
   }
-
   .remodal[data-remodal-id=ageFilter] {
     width: 58rem;
     font-size: 4.2rem;
@@ -4211,19 +4291,20 @@ footer a:hover .icon {
     top: 0.75rem;
   }
   .remodal[data-remodal-id=faq-success] {
-    width: 48.6rem;
-    padding: 7.3rem 0 5.7rem;
+    width: 90vw;
+    padding: 7rem 0 3.6rem;
   }
   .remodal[data-remodal-id=faq-success] h1 {
     font-size: 4.2rem;
-    line-height: 4.2rem;
+    line-height: 4.8rem;
   }
   .remodal[data-remodal-id=faq-success] .text.medium {
-    font-size: 3.6rem;
-    line-height: 4.2rem;
+    font-size: 3.2rem;
+    line-height: 3.6rem;
   }
   .remodal[data-remodal-id=faq-success] .button {
     font-size: 3.6rem;
+    line-height: 3.2rem;
   }
   .remodal[data-remodal-id=authorization] {
     width: 44rem;
@@ -4261,6 +4342,10 @@ footer a:hover .icon {
   .remodal[data-remodal-id=registration] .form .button {
     font-size: 3.6rem;
   }
+  .remodal[data-remodal-id=registration] .form .column .input.row label.text {
+    font-size: 2.2rem;
+    line-height: 2.4rem;
+  }
   .remodal[data-remodal-id=registration] .text.tiny {
     font-size: 2.4rem;
     line-height: 2.8rem;
@@ -4268,25 +4353,32 @@ footer a:hover .icon {
   .remodal[data-remodal-id=registration] p {
     margin-bottom: 5rem;
   }
-  .remodal[data-remodal-id=registration] .bottom {
-    font-size: 3.6rem;
-    line-height: 3.6rem;
+  .remodal[data-remodal-id=registration] .bottom h2 {
+    font-size: 4.2rem;
+    margin-bottom: 2rem;
+  }
+  .remodal[data-remodal-id=registration] .bottom .button {
+    font-size: 4.2rem;
+    padding: 1.5rem 3.6rem;
+    width: 38.5rem;
   }
   .remodal[data-remodal-id=check-success] {
     width: 58rem;
-    padding: 7.5rem 0 5.6rem;
+    padding: 6rem 0 5.6rem;
   }
   .remodal[data-remodal-id=check-success] h1 {
     font-size: 4.2rem;
     line-height: 4.2rem;
+    width: 36rem;
+    margin: 0 auto;
   }
   .remodal[data-remodal-id=check-success] .text.medium {
-    font-size: 3.6rem;
-    line-height: 4.2rem;
-  }
-  .remodal[data-remodal-id=check-success] .alert {
     font-size: 3.2rem;
     line-height: 3.6rem;
+  }
+  .remodal[data-remodal-id=check-success] .alert {
+    font-size: 2.7rem;
+    line-height: 3.1rem;
     padding: 1rem 2rem;
   }
   .remodal[data-remodal-id=check-success] p {
@@ -4300,45 +4392,66 @@ footer a:hover .icon {
   .remodal[data-remodal-id=check] {
     overflow: visible;
     width: 58rem;
-    padding: 15.8rem 0 22rem;
+    padding: 6rem 0 0;
   }
   .remodal[data-remodal-id=check] h1 {
-    width: 100%;
-    position: absolute;
-    top: 5.5rem;
-    left: 0;
     font-size: 5.2rem;
-    line-height: 5.2rem;
+    line-height: 5rem;
+    margin-bottom: 1.5rem;
   }
   .remodal[data-remodal-id=check] h2 {
-    text-align: left;
     font-size: 2.8rem;
     line-height: 3.2rem;
+    text-align: center;
   }
-  .remodal[data-remodal-id=check] .form-wrapper {
-    width: 38.5rem;
+  .remodal[data-remodal-id=check] .form .form-wrap {
+    margin: 0;
+    margin-top: 40rem;
   }
-  .remodal[data-remodal-id=check] .form-wrapper:before {
-    width: 21.4rem;
-    height: 50.3rem;
-    top: 13rem;
-    left: -1.9rem;
+  .remodal[data-remodal-id=check] .form .form-wrap:before {
+    width: 25.6rem;
+    height: 48rem;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(100% - 9.7rem);
+    top: auto;
+    right: auto;
+    z-index: -1;
   }
-  .remodal[data-remodal-id=check] .form-wrapper .form {
-    font-size: 4.2rem;
-    padding: 0 3rem 0 3.2rem;
-  }
-  .remodal[data-remodal-id=check] .alert {
-    font-size: 3.2rem;
-    line-height: 3.2rem;
-    padding: 1rem 2rem;
-  }
-  .remodal[data-remodal-id=check] .button {
-    width: 43rem;
+  .remodal[data-remodal-id=check] .form .form-wrap:after {
+    content: "";
+    background: url(/images/icons/shadow.png) center/contain no-repeat;
+    height: 3rem;
+    left: 0;
+    right: 0;
+    top: -5.9rem;
     position: absolute;
-    font-size: 3.6rem;
-    bottom: 7.5rem;
-    left: calc(50% - 21.5rem);
+    z-index: -1;
+  }
+  .remodal[data-remodal-id=check] .form .form-wrap .form-items {
+    padding: 0 6.4rem;
+  }
+  .remodal[data-remodal-id=check] .form .form-wrap .form-items:before {
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: -3rem;
+    position: absolute;
+    background-color: #3c1400;
+    z-index: -1;
+  }
+  .remodal[data-remodal-id=check] .form .form-wrap .alert {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    margin: 5rem auto 0;
+    font-size: 2.8rem;
+    line-height: 3.2rem;
+    padding: 1.4rem 3.5rem;
+  }
+  .remodal[data-remodal-id=check] .form .form-wrap .button {
+    margin: 0 auto;
   }
   .remodal[data-remodal-id=profile] {
     width: 58rem;
@@ -4351,13 +4464,13 @@ footer a:hover .icon {
   .remodal[data-remodal-id=profile] h2 {
     font-size: 4.2rem;
     line-height: 5.2rem;
-    margin-bottom: 3rem;
+    margin: 2rem 0;
   }
   .remodal[data-remodal-id=profile] .alert {
     align-self: center;
     width: 58rem;
-    font-size: 3.2rem;
-    line-height: 3.6rem;
+    font-size: 2.6rem;
+    line-height: 3.2rem;
   }
   .remodal[data-remodal-id=profile] .table {
     margin-top: 2.5rem;

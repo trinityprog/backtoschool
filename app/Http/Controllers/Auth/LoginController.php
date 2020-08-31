@@ -71,7 +71,8 @@ class LoginController extends Controller
 
 
 
-        return redirect('/#authorization')->withErrors([ 'phone' => __('validation.exists', [ 'attribute' => 'телефон' ]) ]);
+        return redirect('/#authorization')->withInput($data);
+//        return redirect('/#authorization')->withErrors([ 'phone' => __('validation.exists', [ 'attribute' => 'телефон' ]) ]);
     }
 
 

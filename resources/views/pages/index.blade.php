@@ -28,8 +28,6 @@
                         @lang('index.hero.top')
                     </div>
                 </div>
-                <div class="column">
-                </div>
             </div>
         </div>
         <div class="bag">
@@ -73,6 +71,8 @@
                         </div>
                         @lang('index.mechanics.2')
                         <span class="text tiny save-check">@lang('index.actions.save_check')</span>
+                        <span class="rules-sms text header medium">@lang('index.rules_sms')</span>
+                        <a class="icon button text header big mobile" href="http://backtoschool.site/profile">@lang('index.actions.upload')</a>
                     </div>
                     <div class="step column" data-aos="fade-left" data-aos-delay="600">
                         <div class="image" style="background-image: url('/images/steps/03.png')">
@@ -136,8 +136,10 @@
 
             </div>
         </div>
-        <img src="{{ asset('/images/prizes_bg_1.png') }}" alt="twix bounty" class="bg bg-1">
-        <img src="{{ asset('/images/prizes_bg_2.png') }}" alt="snickers" class="bg bg-2">
+        <div class="container">
+            <img src="{{ asset('/images/prizes_bg_1.png') }}" alt="twix bounty" class="bg bg-1">
+            <img src="{{ asset('/images/prizes_bg_2.png') }}" alt="snickers" class="bg bg-2">
+        </div>
     </section>
 
     <section id="winners">

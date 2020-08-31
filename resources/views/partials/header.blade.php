@@ -7,7 +7,6 @@
             <a class="icon button text header big mobile"
                href="@if(Auth::check()){{ url("/profile") }}
                     @else #authorization @endif">
-                <i class="icon check"></i>
                 @lang('index.actions.upload')
             </a>
         <a href="{{ url('/#mechanics') }}">@lang('index.header.about')</a>

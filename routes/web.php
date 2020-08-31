@@ -13,10 +13,7 @@
 
 
 
-//Route::get('/', function () {
-//    return \App\User::with('checks')->withCount('checks')->get();
 
-//});
 Route::get('/', 'HomeController@index');
 Route::get('sms', 'SMSController@index');
 
