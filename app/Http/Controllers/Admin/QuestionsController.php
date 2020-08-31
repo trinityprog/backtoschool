@@ -42,7 +42,7 @@ class QuestionsController extends Controller
                 ->latest()->paginate($perPage);
         }
         else {
-            $questions = Question::latest()->paginate($perPage);
+            $questions = Question::where('status','!=', -1)->latest()->paginate($perPage);
         }
 
         return view('admin.questions.index', compact('questions'));
@@ -110,7 +110,9 @@ class QuestionsController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        Question::destroy($id);
+        $question = Question::find($id);
+        $question->status = -1;
+        $question->save();
 
         return redirect('admin/questions')->with('flash_message', 'Question deleted!');
     }

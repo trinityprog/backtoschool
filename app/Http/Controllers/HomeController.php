@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Mail\QuestionCreated;
 use App\Question;
 use App\Winner;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -16,13 +19,18 @@ class HomeController extends Controller
 
     public function __construct()
     {
+
     }
 
 
 
     public function index()
     {
-        return view('pages.index');
+        if(Carbon::parse('2020-09-01 00:01:00')->isPast() || Str::contains(''.URL::current(), 'test') == true){
+            return view('pages.index');
+        }else{
+            echo "XD";
+        }
     }
 
 
@@ -45,11 +53,19 @@ class HomeController extends Controller
             'email' => 'required|email:rfc',
             'phone' => 'required|size:16',
             'question' => 'required|min:10|max:150'
+        ],[
+            'name.required' => 'Անհրաժեշտ է լրացնել անունը',
+            'name.min' => 'Անհրաժեշտ է լրացնել անունը',
+            'name.alpha' => 'Անհրաժեշտ է լրացնել անունը',
+            'name.max' => 'Անհրաժեշտ է լրացնել անունը',
+            'phone.required' => 'Անհրաժեշտ է լրացնել հեռախոսահամարը',
+            'email.required' => 'Անհրաժեշտ է լրացնել e-mail-ը',
+            'email.email' => 'Անհրաժեշտ է լրացնել e-mail-ը'
         ]);
 
         if($validator->fails())
-//            return redirect('/#faq')->withInput($data)->withErrors($validator);
-            return redirect('/#faq')->withInput($data);
+            return redirect('/#faq')->withInput($data)->withErrors($validator);
+//            return redirect('/#faq')->withInput($data);
 
         $question = Question::create([
             'name' => $data['name'],
@@ -58,7 +74,7 @@ class HomeController extends Controller
             'question' => $data['question']
         ]);
 
-        Mail::to('dentechduke@gmail.com')->send(new QuestionCreated($question));
+        Mail::to('support@backtoschool.am')->send(new QuestionCreated($question));
 
         return redirect('/#faq-success');
     }

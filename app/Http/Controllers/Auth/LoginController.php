@@ -57,6 +57,9 @@ class LoginController extends Controller
         $data = $request->only('phone');
         $validator = Validator::make($data , [
             'phone' => 'required|size:16|exists:users,email',
+        ],[
+            'phone.required' => 'Անհրաժեշտ է լրացնել հեռախոսահամարը',
+            'phone.exists' => 'Հեռախոսահամարը գրանցված չէ',
         ]);
         if($validator->fails()){
             return redirect('/#authorization')

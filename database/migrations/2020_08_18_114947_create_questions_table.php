@@ -21,6 +21,7 @@ class CreateQuestionsTable extends Migration
             $table->text('question')->nullable();
             $table->text('answer')->nullable();
             $table->integer('answered')->nullable();
+            $table->integer('status')->default(0);
             });
     }
 

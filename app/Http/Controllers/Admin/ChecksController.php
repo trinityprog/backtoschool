@@ -44,7 +44,7 @@ class ChecksController extends Controller
             );
         }
 
-        if(!empty($type)){
+        if(!empty($from)){
             array_push($whereParameters,
                 ['from', '=', $from]
             );
@@ -76,6 +76,9 @@ class ChecksController extends Controller
         $validator = Validator::make($data , [
             'check' => 'required',
             'cash' => 'required'
+        ],[
+            'check.required' => 'Անհրաժեշտ է լրացնել կտրոնի ֆիսկալ համարը',
+            'cash.required' => 'Անհրաժեշտ է լրացնել դրամարկղի համարը '
         ]);
         if($validator->fails()){
             return redirect('/#check')
@@ -173,7 +176,7 @@ class ChecksController extends Controller
         $keyword = $request->get('search');
         $filter = $request->get('filter');
         $status = $request->get('status');
-        $type = $request->get('type');
+        $from = $request->get('from');
         $perPage = 25;
         $fc = 0;
         if(!empty($filter)){
@@ -191,9 +194,9 @@ class ChecksController extends Controller
             );
         }
 
-        if(!empty($type)){
+        if(!empty($from)){
             array_push($whereParameters,
-                ['type', '=', $type]
+                ['from', '=', $from]
             );
         }
         $query = Check::where($whereParameters);

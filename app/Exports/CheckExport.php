@@ -29,8 +29,13 @@ class CheckExport implements FromCollection, ShouldAutoSize, WithEvents, WithHea
     public function collection()
     {
         foreach($this->data as $item){
-            if($item->photo !=  null)
+            if($item->status !=  null)
                 $item->photo = asset("/i/" . $item->photo ) ;
+            switch ($item->status){
+                case 0 : $item->status = "Не проверено"; break;
+                case 1 : $item->status = "Принят"; break;
+                case 2 : $item->status = "Отклонен"; break;
+            }
         }
         return $this->data;
     }
@@ -40,19 +45,20 @@ class CheckExport implements FromCollection, ShouldAutoSize, WithEvents, WithHea
         return [
             $check->id,
             $check->created_at,
-            $check->photo,
+            $check->check,
+            $check->cash,
             $check->status,
             $check->user->id,
             $check->user->name,
             $check->user->email,
-            $check->type
+            $check->from
 
         ];
     }
 
     public function headings(): array
     {
-        return ['ID', 'Дата', 'Чек', 'Статус', 'ID Пользователя', 'Имя', 'Телефон', 'Магазин'];
+        return ['ID', 'Дата', 'Номер чека','Номер кассы', 'Статус', 'ID Пользователя', 'Имя', 'Телефон', 'Тип'];
     }
 
         /**

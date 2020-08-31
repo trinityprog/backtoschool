@@ -28,7 +28,7 @@
                                 <option value="Отклонен" {{(request()->has('status') && request()->input('status') == 'Отклонен' ? 'selected' : '')}}>Отклонен</option>
                             </select>
                             <select name="from" class="form-control">
-                                <option value="" {{(request()->has('from') && request()->input('from') == '' ? 'selected' : '')}}>Выберите магазин</option>
+                                <option value="" {{(request()->has('from') && request()->input('from') == '' ? 'selected' : '')}}>Выберите вид</option>
                                 <option {{(request()->has('from') && request()->input('from') == 'web' ? 'selected' : '')}}>web</option>
                                 <option {{(request()->has('from') && request()->input('from') == 'sms' ? 'selected' : '')}}>sms</option>
                             </select>
@@ -46,7 +46,7 @@
                         <a href="{{ url('/admin/checks/export/'.
                                     '?filter=' . ((request()->has('filter')) ? request('filter') : '') .
                                     '&status=' . ((request()->has('status')) ? request('status') : '') .
-                                    '&type=' . ((request()->has('type')) ? request('type') : '')) .
+                                    '&from=' . ((request()->has('from')) ? request('from') : '')) .
                                     '&search=' . ((request()->has('search')) ? request('search') : '')
                                     }}" class="export-import">
                             <svg xmlns="http://www.w3.org/2000/svg" width="9.027" height="12.035" viewBox="0 0 9.027 12.035">
@@ -55,7 +55,7 @@
                                     <path d="M162.2,1.44V6.77h.752V1.44l1.615,1.615.532-.532L162.574,0l-2.523,2.523.532.532Z" transform="translate(-89.169 0)" fill="#fff"/>
                                 </g>
                             </svg>
-                            {{ (request()->has('filter') || (request()->has('search')) || (request()->has('type')) || (request()->has('status')))  ? 'Экспорт фильтра' : 'Экспорт' }}
+                            {{ (request()->has('filter') || (request()->has('search')) || (request()->has('from')) || (request()->has('status')))  ? 'Экспорт фильтра' : 'Экспорт' }}
                         </a>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                 <tbody>
                 @foreach($checks as $item)
                     <tr >
-                        <td style="border-left: 5px solid @if($item->status == 'Принят') mediumseagreen @elseif($item->status == 'Отклонен') red @else orange; padding-left: 5px @endif">{{ $loop->iteration }}</td>
+                        <td style="border-left: 5px solid @if($item->status == 1) mediumseagreen @elseif($item->status == 2) red @else orange; padding-left: 7px @endif">{{ $loop->iteration }}</td>
                         <td>{{ $item->created_at->format('d.M.Y H:i:s') }}</td>
                         <td>{{ $item->check . " " . $item->cash }}</td>
                         <td>{{ $item->from }}</td>
@@ -116,7 +116,7 @@
                     'search' => Request::get('search'),
                     'date-from' => Request::get('date-from'),
                     'date-to' => Request::get('date-to'),
-                    'type' => Request::get('type'),
+                    'from' => Request::get('from'),
                     'status' => Request::get('status'),
                     ])->render()
                 !!}

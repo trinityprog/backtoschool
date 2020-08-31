@@ -73,7 +73,6 @@
             <button data-remodal-action="close" class="remodal-close"></button>
             <form class="form text medium column" action="{{ url('/check') }}" method="POST">
                 @csrf
-{{--                {{ $errors }}--}}
                 <h1 class="text header">@lang('index.modals.check.top')</h1>
                 <h2 class="text din header small">@lang('index.modals.check.text')</h2>
                 <div class="form-wrap">
@@ -81,9 +80,15 @@
                         <div class="input @error('check') error @enderror">
                             <input type="text" name="check" placeholder="@lang('index.profile.table.check')" id="check">
                         </div>
+                        <span class="text error tiny">
+                            @error('check') {{ $message }} @enderror
+                        </span>
                         <div class="input @error('cash') error @enderror">
                             <input type="text" name="cash"  placeholder="@lang('index.profile.table.cash')" id="cash">
                         </div>
+                        <span class="text error tiny">
+                            @error('cash') {{ $message }} @enderror
+                        </span>
                         <button type="submit" class="button text header g-trigger-register">
                             @lang('index.actions.register')
                         </button>

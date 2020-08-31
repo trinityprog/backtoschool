@@ -91,10 +91,15 @@ class RegisterController extends Controller
             'name' => 'required|min:2|max:20|alpha',
             'phone' => 'required|size:16|unique:users,email',
             'rules' => 'required',
+        ],[
+            'name.required' => 'Անհրաժեշտ է լրացնել անունը',
+            'name.min' => 'Անհրաժեշտ է լրացնել անունը',
+            'phone.required' => 'Անհրաժեշտ է լրացնել հեռախոսահամարը',
         ]);
 
         if($validator->fails()){
             return redirect('/#registration')
+                ->withErrors($validator)
                 ->withInput();
 //            return redirect('/#registration')
 //                ->withErrors($validator)->withInput();

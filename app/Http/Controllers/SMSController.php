@@ -43,6 +43,7 @@ class SMSController extends Controller
                 'text' => $request->text ? $request->text : " - ",
                 'request_text' => json_encode($request->all()),
                 'user_id' => $user_id,
+                'status' => 1,
                 'created_at' =>  date('Y-m-d H:i:s'),
                 'updated_at' =>  date('Y-m-d H:i:s'),
             ]);
@@ -78,9 +79,9 @@ class SMSController extends Controller
                 'created_at' =>  date('Y-m-d H:i:s'),
                 'updated_at' =>  date('Y-m-d H:i:s'),
             ]);
-            return "Введите правильные данные(В формате НОМЕР_ЧЕКА(ПРОБЕЛ)НОМЕР_КАССЫ)";
+            return "Սխալ տվյալներ: Մուտքագրիր կտրոնի Ֆիսկալ համարը<բացատ>Դրամարկղի համարը";
         }
-        return "Ваш чек успешно зарегистрирован";
+        return "Կտրոնն ընդունված է և ստուգումից հետո կմասնակցի շաբաթական խաղարկությանը";
     }
 }
 //{"msisdn":"37498339075","service-number":"1004","operator":"Vivacell","text":"12345678 1234","id":"40262108","date":"2020-08-28%2011%3A45%3A00"}msisdn=+37499999999&servicenumber=1234&operator=operator&text=Test%20Message&date=2008-10-13%2013:30:10

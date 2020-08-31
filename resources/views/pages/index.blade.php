@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <span class="rules-sms text header medium">@lang('index.rules_sms')</span>
-                <a href="{{ asset("/docs/rules_am.pdf" ) }}" download="@lang('index.rules').pdf" class="link text header medium">@lang('index.rules')</a>
+                <a href="{{ asset("/docs/blank.pdf" ) }}" download="@lang('index.rules').pdf" class="link text header medium">@lang('index.rules')</a>
             </div>
         </div>
     </section>
