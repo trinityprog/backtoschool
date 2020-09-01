@@ -13,6 +13,11 @@ class Winner extends Model
      */
     protected $table = 'winners';
 
+    protected $casts = [
+        'date_win' => 'date:d.m.Y'
+    ];
+
+
     /**
     * The database primary key value.
     *
@@ -25,7 +30,7 @@ class Winner extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'phone', 'city', 'prize'];
+    protected $fillable = ['name', 'phone', 'city', 'prize', 'from', 'date_win'];
 
 
 }

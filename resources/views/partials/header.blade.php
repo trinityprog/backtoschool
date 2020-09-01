@@ -5,8 +5,7 @@
     <div class="container row header text small">
         <div class="slide"></div>
             <a class="icon button text header big mobile"
-               href="@if(Auth::check()){{ url("/profile") }}
-                    @else #authorization @endif">
+               href="@auth #profile @else #authorization @endauth">
                 @lang('index.actions.upload')
             </a>
         <a href="{{ url('/#mechanics') }}">@lang('index.header.about')</a>

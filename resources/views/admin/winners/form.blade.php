@@ -19,7 +19,67 @@
     {!! $errors->first('prize', '<p class="help-block">:message</p>') !!}
 </div>
 
+<div class="form-group {{ $errors->has('date_win') ? 'has-error' : ''}}">
+    <label for="date_win" class="control-label">{{ 'Дата выигрыша' }}</label>
+    <input type="text" name="date_win" value="{{ (request()->has('date_win')) ? request()->input('date_win') : \Carbon\Carbon::now()->format('d.m.Y') }}">
+</div>
+
+<div class="form-group {{ $errors->has('from') ? 'has-error' : ''}}">
+    <label for="from" class="control-label">{{ 'Вид' }}</label>
+    <select name="from" class="form-control" id="from" >
+        @foreach (json_decode('{"web":"web","sms":"sms"}', true) as $optionKey => $optionValue)
+            <option value="{{ $optionKey }}" {{ (isset($check->status) && $check->status == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+        @endforeach
+    </select>
+    {!! $errors->first('from', '<p class="help-block">:message</p>') !!}
+</div>
+
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Изменить' : 'Добавить' }}">
 </div>
+<script>
+    $(document).ready(function (){
+        $('input[name="date_win"]').daterangepicker({
+            "singleDatePicker": true,
+            "buttonClasses": "ui mini button",
+            "applyButtonClasses": "primary",
+            "locale": {
+                "format": "DD.MM.YYYY",
+                "separator": " - ",
+                "applyLabel": "Применить",
+                "cancelLabel": "Отмена",
+                "fromLabel": "От",
+                "toLabel": "До",
+                "customRangeLabel": "Свой",
+                "daysOfWeek": [
+                    "Вс",
+                    "Пн",
+                    "Вт",
+                    "Ср",
+                    "Чт",
+                    "Пт",
+                    "Сб"
+                ],
+                "monthNames": [
+                    "Январь",
+                    "Февраль",
+                    "Март",
+                    "Апрель",
+                    "Май",
+                    "Июнь",
+                    "Июль",
+                    "Август",
+                    "Сентябрь",
+                    "Октябрь",
+                    "Ноябрь",
+                    "Декабрь"
+                ],
+                "firstDay": 1
+            }
+
+        }, function(start) {
+            $("#start").val(start.format('DD.MM.YYYY'));
+        });
+    })
+</script>

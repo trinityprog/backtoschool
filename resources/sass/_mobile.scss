@@ -291,14 +291,9 @@
         left: unset;
       }
     }
-    >.middle{
-        z-index: auto;
-        bottom: auto;
-        padding-top: 38.5rem;
-    }
     >.bottom{
       bottom: unset;
-      top: 48.3rem;
+      top: 40rem;
       margin-bottom: 0;
     }
   }
@@ -834,6 +829,9 @@
       .form{
         padding: 5.3rem 5.4rem 5.5rem;
         font-size: 4.2rem;
+        input[name=phone]{
+            letter-spacing: -0.68rem;
+        }
         h1{
           font-size: 5.2rem;
           line-height: 5.2rem;
@@ -850,9 +848,6 @@
       .bottom{
         font-size: 3.6rem;
         line-height: 3.6rem;
-        h2{
-
-        }
       }
     }
     &[data-remodal-id="registration"]{

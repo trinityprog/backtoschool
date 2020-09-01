@@ -36,7 +36,7 @@ return [
     'mechanics' => [
         '1' => '<div class="body medium header text din">Գնի՛ր Snickers<sup>®</sup> +<br>Bounty<sup>®</sup>/Twix<sup>®</sup></div>',
         '2' => '<div class="body medium header text din">ԳՐԱՆՑԻ՛Ր ԿՏՐՈՆԻ ՖԻՍԿԱԼ<br>ՀԱՄԱՐԸ ԵՎ ԴՐԱՄԱՐԿՂԻ<br>ՀԱՄԱՐԸ ԿԱՅՔՈՒՄ ԿԱՄ SMS-Ի<br>ՄԻՋՈՑՈՎ՝ 1004*<br>ՀԵՌԱԽՈՍԱՀԱՄԱՐՈՎ</div>',
-        '3' => '<div class="body medium header text din">Մասնակցի՛րt մրցանակների<br>շաբաթական<br>խաղարկությանը</div>',
+        '3' => '<div class="body medium header text din">Մասնակցի՛ր մրցանակների<br>շաբաթական<br>խաղարկությանը</div>',
     ],
     'prizes' => 'ՇԱԲԱԹԱԿԱՆ ՄՐՑԱՆԱԿՆԵՐ',
     'faq' => [

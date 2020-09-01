@@ -40,16 +40,16 @@
         </div>
         <div class="tablet"></div>
         @lang('index.hero.containers')
-        <div class="middle">
-            <div class="container column">
-                <a href="tel:099955226" class="text">
-                    @lang('index.hero.middle')
-                </a>
-            </div>
-        </div>
         <div class="bottom">
+            <div class="middle">
+                <div class="container column">
+                    <a href="tel:099955226" class="text">
+                        @lang('index.hero.middle')
+                    </a>
+                </div>
+            </div>
             <div class="container column">
-                <a class="icon button text header big g-trigger-register" href="@auth #profile @else #authorization @endauth">@lang('index.actions.upload')</a>
+                <a class="icon button text header big g-trigger-register" id="ga-go" href="@auth #profile @else #authorization @endauth">@lang('index.actions.upload')</a>
             </div>
         </div>
 
@@ -72,7 +72,7 @@
                         @lang('index.mechanics.2')
                         <span class="text tiny save-check">@lang('index.actions.save_check')</span>
                         <span class="rules-sms text header medium">@lang('index.rules_sms')</span>
-                        <a class="icon button text header big mobile" href="http://backtoschool.site/profile">@lang('index.actions.upload')</a>
+                        <a class="icon button text header big mobile" href="@auth #profile @else #authorization @endauth">@lang('index.actions.upload')</a>
                     </div>
                     <div class="step column" data-aos="fade-left" data-aos-delay="600">
                         <div class="image" style="background-image: url('/images/steps/03.png')">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <span class="rules-sms text header medium">@lang('index.rules_sms')</span>
-                <a href="{{ asset("/docs/blank.pdf" ) }}" download="@lang('index.rules').pdf" class="link text header medium">@lang('index.rules')</a>
+                <a href="{{ asset("/docs/rules_am.pdf" ) }}" download="Մասնակցության կանոններ.pdf" class="link text header medium">@lang('index.rules')</a>
             </div>
         </div>
     </section>
@@ -97,7 +97,7 @@
                     <div class="prize">
                         <div class="image" style="background-image: url('/images/prizes/main/01.png')">
                             <div class="number text impact">
-                                <span>x</span><span>4</span>
+                                <span>x</span><span>5</span>
                             </div>
                         </div>
                     </div>

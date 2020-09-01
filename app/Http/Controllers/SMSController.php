@@ -43,7 +43,6 @@ class SMSController extends Controller
                 'text' => $request->text ? $request->text : " - ",
                 'request_text' => json_encode($request->all()),
                 'user_id' => $user_id,
-                'status' => 1,
                 'created_at' =>  date('Y-m-d H:i:s'),
                 'updated_at' =>  date('Y-m-d H:i:s'),
             ]);
@@ -55,7 +54,7 @@ class SMSController extends Controller
                 'text' => $request->text ? $request->text : " - ",
                 'request_text' => json_encode($request->all()),
                 'user_id' => $user_id,
-                'status' => 0,
+                'status' => 1,
                 'created_at' =>  date('Y-m-d H:i:s'),
                 'updated_at' =>  date('Y-m-d H:i:s'),
             ]);

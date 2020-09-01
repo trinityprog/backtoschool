@@ -29,14 +29,15 @@ class WinnersController extends Controller
                 ->orWhere('prize', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } elseif(!empty($filter)){
+            $from = $request->get('from');
             $filter = str_replace(' ', '', request()->input('filter'));
             $date_from = Carbon::parse(explode('-', $filter)[0])->format('Y-m-d');
             $date_to = Carbon::parse(explode('-', $filter)[1])->format('Y-m-d');
-            $winners = Winner::whereBetween('created_at', [$date_from.' 00:00:00', $date_to.' 23:59:59'])
+            $winners = Winner::where('status', '!=', -1)->where('from', '=', $from)->whereBetween('created_at', [$date_from.' 00:00:00', $date_to.' 23:59:59'])
                 ->latest()->paginate($perPage);
         }
         else {
-            $winners = Winner::latest()->paginate($perPage);
+            $winners = Winner::where('status', '!=', -1)->latest()->paginate($perPage);
         }
 
         return view('admin.winners.index', compact('winners'));
@@ -101,7 +102,10 @@ class WinnersController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        Winner::destroy($id);
+        $winner = Winner::find($id);
+        $winner->status = -1;
+        $winner->save();
+
 
         return redirect('admin/winners')->with('flash_message', 'Winner deleted!');
     }

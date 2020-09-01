@@ -15,10 +15,13 @@ class CreateWinnersTable extends Migration
         Schema::create('winners', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->timestamp('date_win')->useCurrent();
+            $table->string('from')->nullable();
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
             $table->string('city')->nullable();
             $table->string('prize')->nullable();
+            $table->integer('status')->default(0);
             });
     }
 

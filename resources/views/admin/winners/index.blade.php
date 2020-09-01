@@ -13,12 +13,13 @@
                 <div class="left">
                     <form method="GET" action="{{ url('/admin/winners') }}" class="form-act" accept-charset="UTF-8" role="search">
                         <label class="search-date">
-                            <input type="text" class="filterdate" name="filter" value="{{ (request()->has('filter')) ? request()->input('filter') : \Carbon\Carbon::createFromDate('10.06.2020')->format('d.m.Y') .' - '.\Carbon\Carbon::now()->format('d.m.Y') }}">
+                            <input type="text" class="filterdate" name="filter" value="{{ (request()->has('filter')) ? request()->input('filter') : \Carbon\Carbon::createFromDate('01.09.2020')->format('d.m.Y') .' - '.\Carbon\Carbon::now()->format('d.m.Y') }}">
                         </label>
 
-                        <select name="type" class="form-control">
-                            <option value="" {{(request()->has('type') && request()->input('type') == '' ? 'selected' : '')}}>Выберите тип</option>
-                            <option {{(request()->has('type') && request()->input('type') == 'magnum' ? 'selected' : '')}}>magnum</option>
+                        <select name="from" class="form-control">
+                            <option value="" {{(request()->has('from') && request()->input('from') == '' ? 'selected' : '')}}>Выберите вид</option>
+                            <option {{(request()->has('from') && request()->input('from') == 'web' ? 'selected' : '')}}>web</option>
+                            <option {{(request()->has('from') && request()->input('from') == 'sms' ? 'selected' : '')}}>sms</option>
                         </select>
 {{--                        <label>--}}
 {{--                            <input class="search" type="text" name="search" placeholder="Поиск" value="{{ request('search') }}">--}}
@@ -49,23 +50,25 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Магазин</th>
-                    <th>Приз</th>
                     <th>Имя</th>
                     <th>Телефон</th>
                     <th>Город</th>
+                    <th>Приз</th>
+                    <th>Дата выигрыша</th>
+                    <th>Вид</th>
                     <th style="text-align: right">Действия</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($winners as $item)
                     <tr>
-                        <td>{{ $item->type }}</td>
-                        <td>{{ $item->prize }}</td>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->phone }}</td>
                         <td>{{ $item->city }}</td>
+                        <td>{{ $item->prize }}</td>
+                        <td>{{ $item->date_win }}</td>
+                        <td>{{ $item->from }}</td>
                         <td style="text-align: right">
                             <a href="{{ url('/admin/winners/' . $item->id . '/edit') }}" title="Edit Brand"><button class="btn btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Изменить</button></a>
 
@@ -83,7 +86,7 @@
                 ['search' => Request::get('search'),
                 'date-from' => Request::get('date-from'),
                 'date-to' => Request::get('date-to'),
-                'type' => Request::get('type'),
+                'from' => Request::get('from'),
                 ])->render()!!} </div>
         </div>
     </div>
@@ -97,7 +100,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>name</th><th>phone</th><th>city</th><th>prize</th><th>type</th>
+                    <th>name</th><th>phone</th><th>city</th><th>prize</th><th>web</th>
                 </tr>
             </thead>
             <tbody>

@@ -13,7 +13,6 @@
                 <tr>
                     <th>#</th>
                     <th>Вопрос</th>
-                    <th>Магазин</th>
                     <th>Порядок</th>
                     <th style="text-align: right">Действия</th>
                 </tr>
@@ -22,8 +21,7 @@
                 @foreach($faqs as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->question_ru }}</td>
-                        <td>{{ $item->type }}</td>
+                        <td>{{ $item->question }}</td>
                         <td>{{ $item->order }}</td>
                         <td style="text-align: right">
                             <a href="{{ url('/admin/faqs/' . $item->id . '/edit') }}" title="Edit Brand"><button class="btn btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Изменить</button></a>
