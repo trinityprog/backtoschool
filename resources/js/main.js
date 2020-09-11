@@ -281,7 +281,11 @@ let phoneMaskInit = () => {
 
 }
 
-
+let check_success = () => {
+    $(document).on('opening', '.remodal[data-remodal-id="check-success"]', function () {
+        window.dataLayer.push({event  :  'registeredcheck'})
+    });
+}
 let dropzoneInit = () => {
     let table = document.querySelector('.table .body');
     let messageBox = document.querySelector('.dz-message');
@@ -500,6 +504,7 @@ window.index = () => {
     winnersInit();
     ageFilterInit();
     AOS.init();
+    check_success();
 }
 
 window.profile = () => {

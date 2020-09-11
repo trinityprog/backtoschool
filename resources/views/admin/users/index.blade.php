@@ -18,7 +18,7 @@
                     <div class="left">
                         <form method="GET" action="{{ url('/admin/users') }}" class="form-act" accept-charset="UTF-8" role="search">
                             <label class="search-date">
-                                <input type="text" class="filterdate" name="filter" value="{{ (request()->has('filter')) ? request()->input('filter') : \Carbon\Carbon::createFromDate('20.08.2020')->format('d.m.Y') .' - '.\Carbon\Carbon::now()->format('d.m.Y') }}">
+                                <input type="text" class="filterdate" name="filter" value="{{ (request()->has('filter')) ? request()->input('filter') : \Carbon\Carbon::createFromDate('01.09.2020')->format('d.m.Y') .' - '.\Carbon\Carbon::now()->format('d.m.Y') }}">
                             </label>
 
                             <select name="from" class="form-control">

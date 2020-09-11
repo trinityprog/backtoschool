@@ -18,27 +18,38 @@ class WinnersController extends Controller
 
     public function index(Request $request)
     {
+        $whereParameters = [
+            ['status', '!=' , -1],
+        ];
         $keyword = $request->get('search');
         $filter = $request->get('filter');
+        $from = $request->get('from');
         $perPage = 25;
 
-        if (!empty($keyword)) {
-            $winners = Winner::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('phone', 'LIKE', "%$keyword%")
-                ->orWhere('city', 'LIKE', "%$keyword%")
-                ->orWhere('prize', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } elseif(!empty($filter)){
-            $from = $request->get('from');
+        if(!empty($filter)){
             $filter = str_replace(' ', '', request()->input('filter'));
             $date_from = Carbon::parse(explode('-', $filter)[0])->format('Y-m-d');
             $date_to = Carbon::parse(explode('-', $filter)[1])->format('Y-m-d');
-            $winners = Winner::where('status', '!=', -1)->where('from', '=', $from)->whereBetween('created_at', [$date_from.' 00:00:00', $date_to.' 23:59:59'])
-                ->latest()->paginate($perPage);
+            array_push($whereParameters,
+                ['date_win', '>', $date_from . ' 00:00:00'],
+                ['date_win', '<', $date_to . ' 23:59:59']);
         }
-        else {
-            $winners = Winner::where('status', '!=', -1)->latest()->paginate($perPage);
+
+        if(!empty($from)){
+            array_push($whereParameters,
+                ['from', '=', $from]
+            );
         }
+        if(!empty($keyword)){
+            array_push($whereParameters,
+                ['phone', 'LIKE', "%$keyword%"]
+            );
+        }
+
+
+
+        $winners = Winner::where($whereParameters)->latest()->paginate($perPage);
+
 
         return view('admin.winners.index', compact('winners'));
     }
@@ -59,8 +70,9 @@ class WinnersController extends Controller
 			'city' => 'required|min:2|max:20|alpha',
 			'prize' => 'required|min:2|max:20'
 		]);
-        $requestData = $request->all();
 
+        $requestData = $request->all();
+        $requestData["date_win"] = Carbon::parse($requestData["date_win"])->toDateTimeString();
         Winner::create($requestData);
 
         return redirect('admin/winners')->with('flash_message', 'Winner added!');

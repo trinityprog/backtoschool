@@ -31581,6 +31581,14 @@ var phoneMaskInit = function phoneMaskInit() {
   });
 };
 
+var check_success = function check_success() {
+  jquery__WEBPACK_IMPORTED_MODULE_1__(document).on('opening', '.remodal[data-remodal-id="check-success"]', function () {
+    window.dataLayer.push({
+      event: 'registeredcheck'
+    });
+  });
+};
+
 var dropzoneInit = function dropzoneInit() {
   var table = document.querySelector('.table .body');
   var messageBox = document.querySelector('.dz-message');
@@ -31784,6 +31792,7 @@ window.index = function () {
   winnersInit();
   ageFilterInit();
   aos__WEBPACK_IMPORTED_MODULE_6__["init"]();
+  check_success();
 };
 
 window.profile = function () {
@@ -31818,8 +31827,8 @@ document.addEventListener('DOMContentLoaded', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\backtoschool\resources\js\main.js */"./resources/js/main.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\backtoschool\resources\sass\main.scss */"./resources/sass/main.scss");
+__webpack_require__(/*! C:\wamp64\www\backtoschool_am\resources\js\main.js */"./resources/js/main.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\backtoschool_am\resources\sass\main.scss */"./resources/sass/main.scss");
 
 
 /***/ })

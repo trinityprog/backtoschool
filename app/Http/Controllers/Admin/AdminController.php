@@ -24,6 +24,7 @@ class AdminController extends Controller
         return view('pages.restrict');
     }
     public function index(){
+        return redirect('/admin/users');
         $counts = '[';
         $dates = '[';
         $count = 0;

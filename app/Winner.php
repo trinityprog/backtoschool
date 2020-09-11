@@ -13,11 +13,7 @@ class Winner extends Model
      */
     protected $table = 'winners';
 
-    protected $casts = [
-        'date_win' => 'date:d.m.Y'
-    ];
-
-
+    protected $dates = ['date_win'];
     /**
     * The database primary key value.
     *

@@ -29,8 +29,6 @@ class CheckExport implements FromCollection, ShouldAutoSize, WithEvents, WithHea
     public function collection()
     {
         foreach($this->data as $item){
-            if($item->status !=  null)
-                $item->photo = asset("/i/" . $item->photo ) ;
             switch ($item->status){
                 case 0 : $item->status = "Не проверено"; break;
                 case 1 : $item->status = "Принят"; break;

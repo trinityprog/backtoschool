@@ -18,14 +18,14 @@
                     <div class="left">
                         <form method="GET" action="{{ url('/admin/checks') }}" class="form-act" accept-charset="UTF-8" role="search">
                             <label class="search-date">
-                                <input type="text" class="filterdate" name="filter" value="{{ (request()->has('filter')) ? request()->input('filter') : \Carbon\Carbon::createFromDate('20.08.2020')->format('d.m.Y') .' - '.\Carbon\Carbon::now()->format('d.m.Y') }}">
+                                <input type="text" class="filterdate" name="filter" value="{{ (request()->has('filter')) ? request()->input('filter') : \Carbon\Carbon::createFromDate('01.09.2020')->format('d.m.Y') .' - '.\Carbon\Carbon::now()->format('d.m.Y') }}">
                             </label>
 
                             <select name="status" class="form-control">
                                 <option value="" {{(request()->has('status') && request()->input('status') == '' ? 'selected' : '')}}>Выберите статус</option>
-                                <option value="Не проверено" {{(request()->has('status') && request()->input('status') == 'Не проверено' ? 'selected' : '')}}>Не проверено</option>
-                                <option value="Принят" {{(request()->has('status') && request()->input('status') == 'Принят' ? 'selected' : '')}}>Принят</option>
-                                <option value="Отклонен" {{(request()->has('status') && request()->input('status') == 'Отклонен' ? 'selected' : '')}}>Отклонен</option>
+                                <option value="0" {{(request()->has('status') && request()->input('status') == 'Не проверено' ? 'selected' : '')}}>Не проверено</option>
+                                <option value="1" {{(request()->has('status') && request()->input('status') == 'Принят' ? 'selected' : '')}}>Принят</option>
+                                <option value="2" {{(request()->has('status') && request()->input('status') == 'Отклонен' ? 'selected' : '')}}>Отклонен</option>
                             </select>
                             <select name="from" class="form-control">
                                 <option value="" {{(request()->has('from') && request()->input('from') == '' ? 'selected' : '')}}>Выберите вид</option>

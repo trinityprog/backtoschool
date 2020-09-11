@@ -39,7 +39,7 @@ class UsersController extends Controller
 
         if(!empty($from)){
             array_push($whereParameters,
-                ['from', 'LIKE', "%$from%"]
+                ['from', '=', $from]
             );
         }
         if(!empty($keyword)){
@@ -80,7 +80,7 @@ class UsersController extends Controller
 
         if(!empty($type)){
             array_push($whereParameters,
-                ['from', 'LIKE', "%$from%"]
+                ['from', '=', $from]
             );
         }
         if(!empty($keyword)){

@@ -21,9 +21,8 @@
 
 <div class="form-group {{ $errors->has('date_win') ? 'has-error' : ''}}">
     <label for="date_win" class="control-label">{{ 'Дата выигрыша' }}</label>
-    <input type="text" name="date_win" value="{{ (request()->has('date_win')) ? request()->input('date_win') : \Carbon\Carbon::now()->format('d.m.Y') }}">
+    <input type="text" class="form-control" name="date_win" value="{{ isset($winner->date_win) ? $winner->date_win->format('d.m.Y') : \Carbon\Carbon::now()->format('d.m.Y') }}">
 </div>
-
 <div class="form-group {{ $errors->has('from') ? 'has-error' : ''}}">
     <label for="from" class="control-label">{{ 'Вид' }}</label>
     <select name="from" class="form-control" id="from" >
