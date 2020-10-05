@@ -31750,6 +31750,7 @@ var winnersInit = function winnersInit() {
           },
           success: function success(response) {
             done(response);
+            console.log(response);
           }
         });
       },

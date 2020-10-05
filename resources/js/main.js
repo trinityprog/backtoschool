@@ -455,6 +455,7 @@ let winnersInit = () => {
                     },
                     success: function(response) {
                         done(response);
+                        console.log(response);
                     }
                 });
             },

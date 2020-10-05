@@ -50,12 +50,12 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Имя</th>
+{{--                    <th>Имя</th>--}}
                     <th>Телефон</th>
                     <th>Город</th>
                     <th>Приз</th>
-                    <th>Дата выигрыша</th>
-                    <th>Вид</th>
+{{--                    <th>Дата выигрыша</th>--}}
+{{--                    <th>Вид</th>--}}
                     <th style="text-align: right">Действия</th>
                 </tr>
                 </thead>
@@ -63,12 +63,12 @@
                 @foreach($winners as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->name }}</td>
+{{--                        <td>{{ $item->name }}</td>--}}
                         <td>{{ $item->phone }}</td>
                         <td>{{ $item->city }}</td>
                         <td>{{ $item->prize }}</td>
-                        <td>{{ $item->date_win->format('d.m.Y') }}</td>
-                        <td>{{ $item->from }}</td>
+{{--                        <td>{{ $item->date_win->format('d.m.Y') }}</td>--}}
+{{--                        <td>{{ $item->from }}</td>--}}
                         <td style="text-align: right">
                             <a href="{{ url('/admin/winners/' . $item->id . '/edit') }}" title="Edit Brand"><button class="btn btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Изменить</button></a>
 

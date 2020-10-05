@@ -65,14 +65,12 @@ class WinnersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'name' => 'required|min:2|max:20|alpha',
 			'phone' => 'required|size:16',
 			'city' => 'required|min:2|max:20|alpha',
 			'prize' => 'required|min:2|max:20'
 		]);
 
         $requestData = $request->all();
-        $requestData["date_win"] = Carbon::parse($requestData["date_win"])->toDateTimeString();
         Winner::create($requestData);
 
         return redirect('admin/winners')->with('flash_message', 'Winner added!');
@@ -98,7 +96,6 @@ class WinnersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-			'name' => 'required|min:2|max:20|alpha',
 			'phone' => 'required|size:16',
 			'city' => 'required|min:2|max:20|alpha',
 			'prize' => 'required|min:2|max:20'

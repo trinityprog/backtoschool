@@ -84,7 +84,7 @@ class HomeController extends Controller
             ])->latest()->get();
         }
 
-        return Winner::all();
+        return Winner::orderBy('id', 'desc')->get();
     }
 
 
